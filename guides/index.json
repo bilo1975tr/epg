@@ -1,0 +1,21 @@
+{
+  "updatedAt": "2026-11-20T18:15:33.284Z",
+  "languages": [
+    {
+      "code": "tr",
+      "name": "Türkçe",
+      "channels": 21,
+      "programs": 791,
+      "xmlFile": "guides/tr.xml",
+      "gzFile": "guides/tr.xml.gz"
+    },
+    {
+      "code": "de",
+      "name": "Almanca",
+      "channels": 918,
+      "programs": 38703,
+      "xmlFile": "guides/de.xml",
+      "gzFile": "guides/de.xml.gz"
+    }
+  ]
+}
