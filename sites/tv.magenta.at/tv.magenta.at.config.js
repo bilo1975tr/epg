@@ -94,9 +94,12 @@ async function loadProgramDetails(item) {
   if (!item.program_id) return {}
   const url = `${API_ENDPOINT}/details/series/${item.program_id}?natco_code=at`
   const data = await axios
-    .get(url, { headers })
+    .get(url, {
+      headers,
+      validateStatus: status => status >= 200 && status < 300
+    })
     .then(r => r.data)
-    .catch(console.log)
+    .catch(() => ({}))
 
   return data || {}
 }

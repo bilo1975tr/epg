@@ -69,9 +69,11 @@ function parseProgramId($item) {
 
 function loadProgramDetails(programId) {
   return axios
-    .get(`https://www.nuevosiglo.com.uy/Programacion/getScheduleXId/${programId}`)
+    .get(`https://www.nuevosiglo.com.uy/Programacion/getScheduleXId/${programId}`, {
+      validateStatus: status => status >= 200 && status < 300
+    })
     .then(r => r.data)
-    .catch(console.log)
+    .catch(() => ({}))
 }
 
 function parseRating(details) {

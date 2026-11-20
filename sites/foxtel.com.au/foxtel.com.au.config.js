@@ -99,11 +99,12 @@ async function loadProgramDetails(programId) {
           'sec-fetch-dest': 'empty',
           'sec-fetch-site': 'same-origin',
           'User-Agent': 'insomnia/2022.7.5'
-        }
+        },
+        validateStatus: status => status >= 200 && status < 300
       }
     )
     .then(r => r.data)
-    .catch(console.log)
+    .catch(() => ({}))
 }
 
 function parseDescription(details) {

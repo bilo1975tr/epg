@@ -93,10 +93,11 @@ async function loadProgramDetails($item) {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
-      }
+      },
+      validateStatus: status => status >= 200 && status < 300
     })
     .then(r => r.data)
-    .catch(console.error)
+    .catch(() => null)
   if (!data) return Promise.resolve({})
   const $ = cheerio.load(data.contentBefore + data.contentAfter)
 

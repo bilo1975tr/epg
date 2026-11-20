@@ -47,9 +47,11 @@ async function loadProgramDetails(item) {
   if (!item.ID) return {}
   const url = `https://clientapi.tv.delta.nl/guide/4/details/${item.ID}?X-Response-Version=4.5`
   const data = await axios
-    .get(url)
+    .get(url, {
+      validateStatus: status => status >= 200 && status < 300
+    })
     .then(r => r.data)
-    .catch(console.log)
+    .catch(() => ({}))
 
   return data || {}
 }

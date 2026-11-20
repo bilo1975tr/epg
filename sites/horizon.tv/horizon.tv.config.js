@@ -71,9 +71,11 @@ async function loadProgramDetails(item) {
   if (!item.i) return {}
   const url = `${API_ENDPOINT}/listings/${item.i}`
   const data = await axios
-    .get(url)
+    .get(url, {
+      validateStatus: status => status >= 200 && status < 300
+    })
     .then(r => r.data)
-    .catch(console.log)
+    .catch(() => ({}))
   return data || {}
 }
 

@@ -207,9 +207,12 @@ function parseInfo(data) {
 async function loadProgramDetails(item) {
   if (!item?.onClick?.URLPage) return {}
   return axios
-    .get(item.onClick.URLPage, { headers: globalHeaders })
+    .get(item.onClick.URLPage, {
+      headers: globalHeaders,
+      validateStatus: status => status >= 200 && status < 300
+    })
     .then(r => r.data)
-    .catch(console.error)
+    .catch(() => ({}))
 }
 
 function parseItems(content) {

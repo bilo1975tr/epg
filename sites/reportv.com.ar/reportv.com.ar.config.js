@@ -87,9 +87,11 @@ async function loadProgramDetails($item) {
   formData.append('idp', idp)
   formData.append('title', title)
   const content = await axios
-    .post('https://www.reportv.com.ar/buscador/DetallePrograma.php', formData)
+    .post('https://www.reportv.com.ar/buscador/DetallePrograma.php', formData, {
+      validateStatus: status => status >= 200 && status < 300
+    })
     .then(r => r.data.toString())
-    .catch(console.error)
+    .catch(() => '')
   if (!content) return Promise.resolve({})
 
   const $ = cheerio.load(content)

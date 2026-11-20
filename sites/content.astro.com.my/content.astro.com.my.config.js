@@ -128,9 +128,11 @@ function parseCategories(details) {
 async function loadProgramDetails(item) {
   const url = `${API_ENDPOINT}/api/v1/linear-detail?siTrafficKey=${item.siTrafficKey}`
   const data = await axios
-    .get(url)
+    .get(url, {
+      validateStatus: status => status >= 200 && status < 300
+    })
     .then(r => r.data)
-    .catch(error => console.log(error.message))
+    .catch(() => null)
   if (!data) return {}
 
   return data.response || {}

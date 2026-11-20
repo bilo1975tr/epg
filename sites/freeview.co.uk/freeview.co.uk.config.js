@@ -92,11 +92,14 @@ function parseItems(content, channel) {
 async function loadProgramDetails(item) {
   const url = `https://www.freeview.co.uk/api/program?pid=${item.program_id}&start_time=${item.start_time}&duration=${item.duration}`
   const data = await axios
-    .get(url, { headers: HEADERS })
+    .get(url, {
+      headers: HEADERS,
+      validateStatus: status => status >= 200 && status < 300
+    })
     .then(r => {
       const programs = r?.data?.data?.programs
       return Array.isArray(programs) && programs.length > 0 ? programs[0] : {}
     })
-    .catch(console.log)
+    .catch(() => ({}))
   return data || {}
 }
