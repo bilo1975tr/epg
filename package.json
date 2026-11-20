@@ -20,7 +20,7 @@
     "start": "node -r @swc-node/register server.ts",
     "dev": "node -r @swc-node/register server.ts",
     "grab": "node -r @swc-node/register scripts/commands/epg/grab.ts",
-    "epg:grab-langs": "node -r @swc-node/register scripts/commands/epg/grab-langs.ts",
+    "epg:grab-langs": "node --max-old-space-size=8192 -r @swc-node/register scripts/commands/epg/grab-langs.ts",
     "lint": "npx eslint \"server.ts\" \"{scripts,tests,sites}/**/*.{ts,mts,js}\"",
     "typecheck": "npx tsc --noEmit",
     "build": "npx tsc --noEmit",

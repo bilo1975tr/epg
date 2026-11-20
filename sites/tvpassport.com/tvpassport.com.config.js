@@ -108,10 +108,13 @@ async function getSiteUrl(channel, date) {
   const f = () =>
     `https://www.tvpassport.com/tv-listings/stations/${channel.site_id}/${date}`
   let url = f()
-  const res = await axios.head(url, { headers })
-    .then(res => saveCookies(res))
+  const res = await axios.head(url, {
+    headers,
+    validateStatus: status => (status >= 200 && status < 300) || status === 404
+  })
+    .then(res => (res.status === 404 ? null : saveCookies(res)))
     .then(res => res?.request?.res?.responseUrl)
-    .catch(console.error)
+    .catch(() => null)
   if (res && res !== url) {
     channel.site_id = getSiteId(res)
     url = f()

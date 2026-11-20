@@ -5,7 +5,23 @@ import pLimit from 'p-limit'
 import dayjs, { Dayjs } from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import merge from 'lodash.merge'
+import axios from 'axios'
 import { Option, program } from 'commander'
+
+axios.defaults.validateStatus = status => (status >= 200 && status < 300) || status === 403 || status === 404
+axios.interceptors.response.use(
+  response => {
+    if (response.status === 403 || response.status === 404) {
+      console.warn(`[Axios Warning] Status ${response.status} for URL: ${response.config.url}`)
+      response.data = ''
+    }
+    return response
+  },
+  error => {
+    console.error(`[Axios Error Caught & Skipped] URL: ${error.config?.url || 'unknown'} | Status: ${error.response?.status || 'N/A'} | Message: ${error.message}`)
+    return Promise.resolve({ status: error.response?.status || 500, data: '' })
+  }
+)
 import { Collection, Logger } from '@freearhey/core'
 import epgGrabber, { EPGGrabber } from 'epg-grabber'
 import { SITES_DIR, GUIDES_DIR } from '../../constants'
