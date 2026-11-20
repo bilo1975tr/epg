@@ -17,6 +17,9 @@ axios.interceptors.response.use(
     return response
   },
   error => {
+    if (error.response?.status === 405) {
+      return Promise.reject(error)
+    }
     console.error(`[Axios Error Caught & Skipped] URL: ${error.config?.url || 'unknown'} | Status: ${error.response?.status || 'N/A'} | Message: ${error.message}`)
     return Promise.resolve({ status: error.response?.status || 500, data: '' })
   }
