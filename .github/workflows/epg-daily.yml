@@ -1,0 +1,54 @@
+name: Daily EPG Update (24h)
+
+on:
+  workflow_dispatch:
+    inputs:
+      langs:
+        description: 'Opsiyonel dil kodları (virgülle ayrılmış, örn: tr,de,en - boş bırakılırsa tüm diller)'
+        required: false
+        default: ''
+  schedule:
+    - cron: '0 2 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  grab-epg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Load IPTV-ORG channel & logo metadata
+        run: npm run api:load
+
+      - name: Grab EPG guides per language
+        run: |
+          if [ -n "${{ github.event.inputs.langs }}" ]; then
+            npm run epg:grab-langs -- --langs=${{ github.event.inputs.langs }} --days=2 --maxConnections=6
+          else
+            npm run epg:grab-langs -- --days=2 --maxConnections=6
+          fi
+
+      - name: Commit and push updated EPG guides
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add guides/
+          if ! git diff --cached --quiet; then
+            git commit -m "[Bot] Daily EPG update ($(date -u +'%Y-%m-%d'))" --no-verify
+            git push
+          else
+            echo "No changes in guides/"
+          fi

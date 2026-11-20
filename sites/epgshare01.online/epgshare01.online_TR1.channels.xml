@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channels>
+  <channel site="epgshare01.online" site_id="TR1#Bein.Sports.Haber.tr" lang="tr" xmltv_id="TR1#Bein.Sports.Haber.tr">Bein Sports Haber</channel>
+  <channel site="epgshare01.online" site_id="TR1#Beinsports.2.tr" lang="tr" xmltv_id="TR1#Beinsports.2.tr">Beinsports 2</channel>
+  <channel site="epgshare01.online" site_id="TR1#Beinsports.3.tr" lang="tr" xmltv_id="TR1#Beinsports.3.tr">Beinsports 3</channel>
+  <channel site="epgshare01.online" site_id="TR1#Beinsports.4.tr" lang="tr" xmltv_id="TR1#Beinsports.4.tr">Beinsports 4</channel>
+  <channel site="epgshare01.online" site_id="TR1#Beinsports.tr" lang="tr" xmltv_id="TR1#Beinsports.tr">Beinsports</channel>
+  <channel site="epgshare01.online" site_id="TR1#CGTN.tr" lang="tr" xmltv_id="TR1#CGTN.tr">CGTN</channel>
+  <channel site="epgshare01.online" site_id="TR1#DMAX.tr" lang="tr" xmltv_id="TR1#DMAX.tr">DMAX</channel>
+  <channel site="epgshare01.online" site_id="TR1#NTV.tr" lang="tr" xmltv_id="TR1#NTV.tr">NTV</channel>
+  <channel site="epgshare01.online" site_id="TR1#TLC.tr" lang="tr" xmltv_id="TR1#TLC.tr">TLC</channel>
+  <channel site="epgshare01.online" site_id="TR1#TRT.1.tr" lang="tr" xmltv_id="TR1#TRT.1.tr">TRT 1</channel>
+</channels>

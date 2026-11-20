@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV EPG Yönetim Paneli - Tüm Dünya Kanalları &amp; Dilleri</title>
+    <meta name="description" content="Tüm dünya dilleri ve kanalları için EPG doğrulama, yayın akışı kontrolü ve XMLTV oluşturma yönetim paneli.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="flex flex-wrap gap-4 justify-between items-center mb-8 bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
+            <div>
+                <h1 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+                    <i class="fas fa-tv mr-3"></i>IPTV EPG Yönetim Paneli
+                </h1>
+                <p class="text-gray-400 mt-1">Tüm Dünya Kanalları • Canlı Yayın Akışı Doğrulama • Çoklu Dil XMLTV &amp; GitHub Otomasyonu</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <button id="syncBtn" onclick="syncWorldSites()" class="bg-amber-600 hover:bg-amber-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 py-2.5 rounded-lg font-medium transition flex items-center shadow-md">
+                    <i class="fas fa-cloud-download-alt mr-2"></i>Siteleri Yükselt
+                </button>
+                <button id="checkBtn" onclick="openValidateModal()" class="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 py-2.5 rounded-lg font-medium transition flex items-center shadow-md">
+                    <i class="fas fa-search-plus mr-2"></i>Kanal Doğrulama ve Araştırma
+                </button>
+                <button id="stopCheckBtn" onclick="stopValidation()" class="hidden bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg font-medium transition flex items-center shadow-md">
+                    <i class="fas fa-stop mr-2"></i>Doğrulamayı Durdur
+                </button>
+                <button id="grabBtn" onclick="openGrabLangModal()" class="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white px-5 py-2.5 rounded-lg font-medium transition flex items-center shadow-md">
+                    <i class="fas fa-globe mr-2"></i>EPG Verilerini Çek
+                </button>
+                <button id="stopGrabBtn" onclick="stopGrabbing()" class="hidden bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg font-medium transition flex items-center shadow-md">
+                    <i class="fas fa-stop mr-2"></i>EPG Çekmeyi Durdur
+                </button>
+                <button id="errorsJumpBtn" onclick="scrollToErrors()" class="hidden bg-rose-700/80 hover:bg-rose-700 text-white px-3.5 py-2.5 rounded-lg font-medium transition flex items-center shadow-md text-sm">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>Hatalar (<span id="headerErrorCount">0</span>)
+                </button>
+                <a id="downloadGuideBtn" href="/api/guide" class="hidden bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-medium transition flex items-center shadow-md">
+                    <i class="fas fa-download mr-2"></i>guide.xml İndir
+                </a>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+            <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-gray-400 text-sm font-medium">Aktif Dünya Sitesi</p>
+                        <h3 id="siteCount" class="text-3xl font-bold mt-2 text-blue-400">Yükleniyor...</h3>
+                    </div>
+                    <div class="p-3 bg-blue-500/10 rounded-lg text-blue-400">
+                        <i class="fas fa-server text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-gray-400 text-sm font-medium">Toplam Dünya Kanalı</p>
+                        <h3 id="channelCount" class="text-3xl font-bold mt-2 text-emerald-400">Yükleniyor...</h3>
+                    </div>
+                    <div class="p-3 bg-emerald-500/10 rounded-lg text-emerald-400">
+                        <i class="fas fa-list-alt text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-gray-400 text-sm font-medium">Desteklenen Dünya Dili</p>
+                        <h3 id="langCount" class="text-3xl font-bold mt-2 text-amber-400">Yükleniyor...</h3>
+                    </div>
+                    <div class="p-3 bg-amber-500/10 rounded-lg text-amber-400">
+                        <i class="fas fa-language text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-5 rounded-xl border border-gray-700 shadow">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-gray-400 text-sm font-medium">Doğrulama Durumu</p>
+                        <h3 id="newStatus" class="text-xl font-bold mt-2 text-purple-400">Hazır</h3>
+                    </div>
+                    <div class="p-3 bg-purple-500/10 rounded-lg text-purple-400">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Validation Results Section -->
+        <div id="newChannelsSection" class="hidden mb-8 bg-gray-800 p-6 rounded-xl border border-purple-500/30 shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-purple-300 flex items-center">
+                    <i class="fas fa-clipboard-check mr-2"></i>Kanal Doğrulama ve Yayın Akışı Kontrol Sonuçları
+                </h2>
+                <button onclick="document.getElementById('newChannelsSection').classList.add('hidden')" class="text-xs text-gray-400 hover:text-white bg-gray-700 px-3 py-1 rounded">Gizle</button>
+            </div>
+            <div id="newChannelsContent" class="space-y-4 max-h-96 overflow-y-auto pr-2"></div>
+        </div>
+
+        <!-- Sites List -->
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow mb-8">
+            <div class="flex flex-wrap gap-4 justify-between items-center mb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-200 flex items-center">
+                        <i class="fas fa-globe-europe mr-2"></i>Dünya EPG Kaynakları (Siteler)
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-1">Bir site adına tıklayarak kanallarını ve dillerini görüntüleyebilirsiniz.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <input id="siteSearchInput" type="text" oninput="renderSitesTable()" placeholder="Site ara (örn: digiturk, sky, tvguide)..." class="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500 w-64">
+                    <select id="siteLangFilter" onchange="renderSitesTable()" class="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-blue-500">
+                        <option value="">Tüm Diller</option>
+                    </select>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-gray-700 text-gray-400 text-sm">
+                            <th class="py-3 px-4">Site / Domain</th>
+                            <th class="py-3 px-4">Diller</th>
+                            <th class="py-3 px-4">Toplam Kanal (XML)</th>
+                            <th class="py-3 px-4">Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sitesTableBody" class="divide-y divide-gray-700 text-sm">
+                        <tr>
+                            <td colspan="4" class="py-4 text-center text-gray-400">Yükleniyor...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="sitesPagination" class="mt-4 flex justify-between items-center text-xs text-gray-400 hidden">
+                <span id="sitesShownInfo"></span>
+                <button onclick="showMoreSites()" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-1.5 rounded-lg">Daha Fazla Göster</button>
+            </div>
+        </div>
+
+        <!-- Live Validation Progress Bar -->
+        <div id="validationProgressBox" class="hidden mb-6 bg-gray-800 p-5 rounded-xl border border-indigo-500/40 shadow-lg">
+            <div class="flex flex-wrap justify-between items-center gap-3 mb-2">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-spinner fa-spin text-indigo-400" id="progressSpinner"></i>
+                    <span class="font-bold text-indigo-300 text-sm" id="progressHeadline">Doğrulama hazırlanıyor...</span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-gray-300">
+                    <span id="progressCounts" class="font-mono bg-gray-900 px-2.5 py-1 rounded border border-gray-700">Site: 0/0 • Kanal: 0/0</span>
+                    <span id="progressElapsed" class="font-mono text-gray-400">0s</span>
+                    <button onclick="stopValidation()" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs font-semibold">
+                        <i class="fas fa-stop mr-1"></i>Durdur
+                    </button>
+                </div>
+            </div>
+            <div class="w-full bg-gray-900 rounded-full h-2.5 overflow-hidden border border-gray-700">
+                <div id="progressBarFill" class="bg-gradient-to-r from-indigo-500 to-emerald-400 h-2.5 transition-all duration-300" style="width: 0%"></div>
+            </div>
+            <div class="mt-2 flex flex-wrap gap-4 text-xs text-gray-400" id="progressStatsLine">
+                <span>Aktif Site: <strong id="progressCurrentSite" class="text-gray-200">-</strong></span>
+                <span>Eklenen: <strong id="progressAdded" class="text-emerald-400">0</strong></span>
+                <span>Silinen: <strong id="progressRemoved" class="text-red-400">0</strong></span>
+                <span>Elenen (0 EPG): <strong id="progressSkipped" class="text-amber-400">0</strong></span>
+            </div>
+        </div>
+
+        <!-- Errors & Diagnostics Center -->
+        <div id="errorsSection" class="mb-6 bg-gray-800 p-6 rounded-xl border border-rose-500/30 shadow-lg">
+            <div class="flex flex-wrap gap-3 justify-between items-center mb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-rose-300 flex items-center">
+                        <i class="fas fa-bug mr-2"></i>Hatalar &amp; Çözüm Merkezi
+                        <span id="errorsTotalBadge" class="ml-2 px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 text-xs font-mono">0</span>
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-1">EPG çekimi veya doğrulamada hata veren siteleri/kanalları, nedenini ve çözüm adımlarını buradan görebilirsiniz.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 items-center">
+                    <select id="errorCategoryFilter" onchange="renderErrorsPanel()" class="bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-xs text-gray-200">
+                        <option value="">Tüm Hata Türleri</option>
+                        <option value="parse">HTML / JSON Ayrıştırma</option>
+                        <option value="http">HTTP Erişim (403 / 404 / 429)</option>
+                        <option value="timeout">Zaman Aşımı</option>
+                        <option value="network">Ağ / DNS Hatası</option>
+                        <option value="empty">0 Program (Boş Akış)</option>
+                        <option value="config">Konfigürasyon Hatası</option>
+                    </select>
+                    <button onclick="clearServerErrors()" class="bg-gray-700 hover:bg-gray-600 text-xs text-white px-3 py-1.5 rounded-lg">Listeyi Temizle</button>
+                </div>
+            </div>
+            <div id="errorsListContainer" class="space-y-2.5 max-h-80 overflow-y-auto pr-1">
+                <p class="text-xs text-gray-400 py-3">Henüz kaydedilmiş bir hata yok.</p>
+            </div>
+        </div>
+
+        <!-- Console Log Output -->
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-200 flex items-center">
+                    <i class="fas fa-terminal mr-2"></i>Canlı İşlem Logları &amp; EPG Çıktıları
+                </h2>
+                <button onclick="clearLogs()" class="text-xs text-gray-400 hover:text-white bg-gray-700 px-3 py-1 rounded">Temizle</button>
+            </div>
+            <pre id="logOutput" class="bg-black/50 p-4 rounded-lg font-mono text-xs text-green-400 h-64 overflow-y-auto whitespace-pre-wrap">Sistem hazır. Dil seçip EPG çekmek için "EPG Verilerini Çek" butonuna tıklayabilirsiniz.</pre>
+        </div>
+    </div>
+
+    <!-- Grab EPG World Languages & GitHub URLs Modal -->
+    <div id="grabLangModal" class="fixed inset-0 bg-black/75 hidden items-center justify-center p-4 z-50">
+        <div class="bg-gray-800 rounded-xl border border-gray-700 w-full max-w-5xl max-h-[90vh] flex flex-col shadow-2xl">
+            <div class="flex justify-between items-center p-5 border-b border-gray-700">
+                <div>
+                    <h3 class="text-xl font-bold text-emerald-400"><i class="fas fa-globe mr-2"></i>Dünya Dilleri &amp; GitHub EPG Adresleri</h3>
+                    <p class="text-xs text-gray-400 mt-1">EPG çekmek istediğiniz dilleri seçin veya her dil için 24 saatte bir GitHub üzerinden güncellenen adresleri kopyalayın.</p>
+                </div>
+                <button onclick="closeGrabLangModal()" class="text-gray-400 hover:text-white text-xl"><i class="fas fa-times"></i></button>
+            </div>
+
+            <!-- GitHub Config & Search Toolbar -->
+            <div class="p-4 bg-gray-900/60 border-b border-gray-700 space-y-3">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div class="md:col-span-2">
+                        <label class="block text-xs text-gray-400 mb-1">GitHub Repo (kullanici/repo)</label>
+                        <input id="githubRepoInput" type="text" oninput="updateGithubSettings()" placeholder="kullanici/epg" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-gray-100 font-mono focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Branch</label>
+                        <input id="githubBranchInput" type="text" oninput="updateGithubSettings()" placeholder="master" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-gray-100 font-mono focus:outline-none focus:border-emerald-500">
+                    </div>
+                </div>
+                <div class="text-[11px] text-gray-400 flex flex-wrap gap-4 items-center">
+                    <span><i class="fas fa-clock text-emerald-400 mr-1"></i>GitHub Actions: 24 saatte bir tüm dillerin EPG'si güncellenir (epg-daily.yml).</span>
+                    <span><i class="fas fa-calendar-check text-indigo-400 mr-1"></i>Ayda 1 kez siteler yükseltilir ve ölü kanallar temizlenir (monthly-validate.yml).</span>
+                </div>
+                <div class="flex flex-wrap gap-2 items-center pt-1">
+                    <input id="langSearchInput" type="text" oninput="renderLangList()" placeholder="Dil ara (Türkçe, English, tr, de, en, fr, ar)..." class="flex-1 min-w-[200px] bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-sm text-gray-100 focus:outline-none focus:border-emerald-500">
+                    <button onclick="selectPresetLangs(['tr','de','en'])" class="bg-gray-700 hover:bg-gray-600 text-xs text-white px-3 py-2 rounded-lg">TR + DE + EN</button>
+                    <button onclick="selectAllVisibleLangs(true)" class="bg-gray-700 hover:bg-gray-600 text-xs text-white px-3 py-2 rounded-lg">Tümünü Seç</button>
+                    <button onclick="selectAllVisibleLangs(false)" class="bg-gray-700 hover:bg-gray-600 text-xs text-white px-3 py-2 rounded-lg">Temizle</button>
+                </div>
+            </div>
+
+            <!-- Languages + GitHub Raw URLs List -->
+            <div class="p-4 overflow-y-auto flex-1">
+                <div id="langListContainer" class="space-y-2">
+                    <p class="text-sm text-gray-400 text-center py-6">Diller yükleniyor...</p>
+                </div>
+            </div>
+
+            <!-- Grab Options & Submit Footer -->
+            <div class="p-4 border-t border-gray-700 bg-gray-900/40 flex flex-wrap gap-4 justify-between items-center">
+                <div class="flex flex-wrap gap-4 items-center text-xs text-gray-300">
+                    <label class="flex items-center gap-2 cursor-pointer text-emerald-300 font-medium">
+                        <input id="grabDiscoverAndPrune" type="checkbox" checked class="rounded bg-gray-700 border-gray-600 text-emerald-500">
+                        <span>Yeni kanalları araştır ve çekim sonrası 0 içeriklileri temizle (Tek adımda doğrula)</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input id="grabSkipEmpty" type="checkbox" checked class="rounded bg-gray-700 border-gray-600 text-emerald-500">
+                        <span>0 içerikli kanalları guide.xml dışı bırak</span>
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <span>Gün:</span>
+                        <select id="grabDaysSelect" class="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-xs text-gray-100">
+                            <option value="1" selected>1 Gün</option>
+                            <option value="2">2 Gün</option>
+                            <option value="3">3 Gün</option>
+                        </select>
+                    </label>
+                    <span id="selectedLangCountText" class="text-emerald-400 font-semibold">0 dil seçildi</span>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="closeGrabLangModal()" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm">İptal</button>
+                    <button id="startGrabLangBtn" onclick="startGrabForSelectedLangs()" class="bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white px-5 py-2 rounded-lg text-sm font-semibold">
+                        <i class="fas fa-play mr-1.5"></i>Seçili Diller İçin EPG Çek
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Validation Options Modal -->
+    <div id="validateModal" class="fixed inset-0 bg-black/75 hidden items-center justify-center p-4 z-50">
+        <div class="bg-gray-800 rounded-xl border border-gray-700 w-full max-w-xl shadow-2xl">
+            <div class="flex justify-between items-center p-5 border-b border-gray-700">
+                <h3 class="text-xl font-bold text-indigo-400"><i class="fas fa-shield-alt mr-2"></i>Kanal Doğrulama ve Araştırma</h3>
+                <button onclick="closeValidateModal()" class="text-gray-400 hover:text-white text-xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-5 space-y-4 text-sm">
+                <p class="text-gray-300 text-xs leading-relaxed">
+                    Yayın akışı testi <strong>sadece ilk 2 programı</strong> kontrol eder, aynı URL isteklerini önbellekte birleştirir ve <strong>4 siteyi eşzamanlı</strong> tarar. Yayın akışı (0 program) olmayan yeni kanallar eklenmez, ölü kanallar temizlenir.
+                </p>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1.5">Doğrulama Modu</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <label class="flex items-start gap-2 cursor-pointer bg-gray-900/70 p-3 rounded-lg border border-indigo-500/40">
+                            <input type="radio" name="validateMode" value="fast" checked class="mt-0.5 text-indigo-500">
+                            <span class="text-xs">
+                                <strong class="text-indigo-300 block">Hızlı Mod (Önerilen)</strong>
+                                <span class="text-gray-400">Yeni kanalların tamamını + mevcutlardan site başı 10 örneklem test eder.</span>
+                            </span>
+                        </label>
+                        <label class="flex items-start gap-2 cursor-pointer bg-gray-900/70 p-3 rounded-lg border border-gray-700">
+                            <input type="radio" name="validateMode" value="full" class="mt-0.5 text-indigo-500">
+                            <span class="text-xs">
+                                <strong class="text-emerald-300 block">Tam Mod (Tüm Kanallar)</strong>
+                                <span class="text-gray-400">Seçili dil/sitelerdeki tüm kanalları tek tek doğrular (TR/DE gibi filtre ile çok hızlı).</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1">Dil Filtresi (Opsiyonel - virgülle ayrılmış, boş bırakılırsa tüm diller)</label>
+                    <input id="validateLangsInput" type="text" placeholder="örn: tr,de (veya tümü için boş bırakın)" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-100">
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button type="button" onclick="document.getElementById('validateLangsInput').value='tr,de'" class="bg-gray-700 hover:bg-gray-600 text-xs px-2.5 py-1 rounded">Sadece TR &amp; DE</button>
+                        <button type="button" onclick="document.getElementById('validateLangsInput').value='tr'" class="bg-gray-700 hover:bg-gray-600 text-xs px-2.5 py-1 rounded">Sadece TR</button>
+                        <button type="button" onclick="document.getElementById('validateLangsInput').value='en'" class="bg-gray-700 hover:bg-gray-600 text-xs px-2.5 py-1 rounded">Sadece EN</button>
+                        <button type="button" onclick="document.getElementById('validateLangsInput').value=''" class="bg-gray-700 hover:bg-gray-600 text-xs px-2.5 py-1 rounded">Tüm Diller</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1">Site Filtresi (Opsiyonel - boş bırakılırsa ilgili tüm siteler)</label>
+                    <input id="validateSitesInput" type="text" placeholder="örn: digiturk.com.tr,dsmart.com.tr,abc.net.au" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-100">
+                </div>
+                <label class="flex items-start gap-2.5 cursor-pointer bg-gray-900/60 p-3 rounded-lg border border-gray-700">
+                    <input id="validateVerifyEpg" type="checkbox" checked class="mt-0.5 rounded bg-gray-700 border-gray-600 text-indigo-500">
+                    <span class="text-xs text-gray-200">
+                        <strong>Canlı Yayın Akışı (EPG - İlk 2 Program) Kontrolü Yap</strong><br>
+                        <span class="text-gray-400">Yeni veya mevcut kanallarda ilk 2 programın gelip gelmediğini test eder; 0 içerikli kanalları eklemez.</span>
+                    </span>
+                </label>
+            </div>
+            <div class="p-4 border-t border-gray-700 flex justify-end gap-2">
+                <button onclick="closeValidateModal()" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm">İptal</button>
+                <button onclick="runValidation()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg text-sm font-semibold">
+                    <i class="fas fa-check-circle mr-1.5"></i>Doğrulamayı Başlat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Channels Modal -->
+    <div id="channelModal" class="fixed inset-0 bg-black/75 hidden items-center justify-center p-4 z-50">
+        <div class="bg-gray-800 rounded-xl border border-gray-700 w-full max-w-4xl max-h-[85vh] flex flex-col shadow-2xl">
+            <div class="flex justify-between items-center p-5 border-b border-gray-700">
+                <h3 id="modalTitle" class="text-xl font-bold text-blue-400">Site Kanalları</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-5 overflow-y-auto flex-1">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-gray-700 text-gray-400 text-xs">
+                                <th class="py-2 px-3">Kanal Adı</th>
+                                <th class="py-2 px-3">Site ID</th>
+                                <th class="py-2 px-3">XMLTV ID</th>
+                                <th class="py-2 px-3">Dil</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modalTableBody" class="divide-y divide-gray-700 text-xs"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-700 text-right">
+                <button onclick="closeModal()" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allSites = [];
+        let allLanguages = [];
+        let currentErrors = [];
+        let selectedLangs = new Set(['tr', 'de']);
+        let siteRenderLimit = 100;
+        let defaultGithubRepo = 'iptv-org/epg';
+        let defaultGithubBranch = 'master';
+
+        function escapeHtml(value) {
+            return String(value ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        async function fetchJson(url, options) {
+            const res = await fetch(url, options);
+            const rawText = await res.text();
+            let parsed = null;
+            try {
+                parsed = rawText ? JSON.parse(rawText) : {};
+            } catch {
+                const looksLikeHtml = rawText.trim().toLowerCase().startsWith('<');
+                throw new Error(
+                    looksLikeHtml
+                        ? `Sunucu/Proxy HTML hata sayfası döndürdü (HTTP ${res.status}). İşlem arka planda devam ediyor olabilir; canlı logları takip edin.`
+                        : `Geçersiz JSON yanıtı (HTTP ${res.status})`
+                );
+            }
+            if (!res.ok) {
+                throw new Error((parsed && parsed.error) || `HTTP ${res.status} hatası`);
+            }
+            return parsed;
+        }
+
+        function scrollToErrors() {
+            document.getElementById('errorsSection')?.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getGithubRepo() {
+            const val = document.getElementById('githubRepoInput')?.value.trim();
+            return val || localStorage.getItem('epg_github_repo') || defaultGithubRepo;
+        }
+
+        function getGithubBranch() {
+            const val = document.getElementById('githubBranchInput')?.value.trim();
+            return val || localStorage.getItem('epg_github_branch') || defaultGithubBranch;
+        }
+
+        function updateGithubSettings() {
+            const repo = document.getElementById('githubRepoInput').value.trim();
+            const branch = document.getElementById('githubBranchInput').value.trim();
+            if (repo) localStorage.setItem('epg_github_repo', repo);
+            if (branch) localStorage.setItem('epg_github_branch', branch);
+            renderLangList();
+        }
+
+        function buildGithubRawUrl(langCode, ext) {
+            const repo = getGithubRepo().replace(/^\/+|\/+$/g, '');
+            const branch = getGithubBranch().replace(/^\/+|\/+$/g, '');
+            return `https://raw.githubusercontent.com/${repo}/${branch}/guides/${encodeURIComponent(langCode)}.${ext}`;
+        }
+
+        async function copyText(text, btn) {
+            try {
+                await navigator.clipboard.writeText(text);
+                const original = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check text-emerald-400"></i>';
+                setTimeout(() => { btn.innerHTML = original; }, 1400);
+            } catch {
+                appendLog(`Kopyalanacak adres: ${text}`);
+            }
+        }
+
+        async function loadStatus() {
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Durum yüklenemedi');
+
+                if (data.githubRepo) defaultGithubRepo = data.githubRepo;
+                if (data.githubBranch) defaultGithubBranch = data.githubBranch;
+
+                document.getElementById('siteCount').innerText = (data.siteCount || 0).toLocaleString('tr-TR');
+                document.getElementById('channelCount').innerText = (data.totalChannels || 0).toLocaleString('tr-TR');
+                document.getElementById('langCount').innerText = (data.languageCount || 0).toLocaleString('tr-TR');
+
+                document.getElementById('grabBtn').disabled = Boolean(data.isGrabbing);
+                document.getElementById('checkBtn').disabled = Boolean(data.isValidating);
+                document.getElementById('syncBtn').disabled = Boolean(data.isSyncing);
+
+                const downloadBtn = document.getElementById('downloadGuideBtn');
+                if (data.hasGuide) {
+                    downloadBtn.classList.remove('hidden');
+                } else {
+                    downloadBtn.classList.add('hidden');
+                }
+
+                allSites = data.sites || [];
+                renderSitesTable();
+            } catch (err) {
+                console.error('Durum yüklenemedi:', err);
+                appendLog(`❌ Durum yükleme hatası: ${err.message}`);
+            }
+        }
+
+        async function loadLanguages() {
+            try {
+                const res = await fetch('/api/languages');
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Diller yüklenemedi');
+
+                if (data.githubRepo) defaultGithubRepo = data.githubRepo;
+                if (data.githubBranch) defaultGithubBranch = data.githubBranch;
+
+                allLanguages = data.languages || [];
+
+                const filterSelect = document.getElementById('siteLangFilter');
+                const currentVal = filterSelect.value;
+                filterSelect.innerHTML = '<option value="">Tüm Diller</option>' +
+                    allLanguages.map(l => `<option value="${escapeHtml(l.code.toUpperCase())}">${escapeHtml(l.name)} (${escapeHtml(l.code.toUpperCase())}) - ${l.channelCount}</option>`).join('');
+                filterSelect.value = currentVal;
+
+                const repoInput = document.getElementById('githubRepoInput');
+                const branchInput = document.getElementById('githubBranchInput');
+                if (!repoInput.value) repoInput.value = localStorage.getItem('epg_github_repo') || defaultGithubRepo;
+                if (!branchInput.value) branchInput.value = localStorage.getItem('epg_github_branch') || defaultGithubBranch;
+
+                renderLangList();
+            } catch (err) {
+                appendLog(`❌ Diller yüklenemedi: ${err.message}`);
+            }
+        }
+
+        function renderSitesTable() {
+            const search = (document.getElementById('siteSearchInput').value || '').trim().toLowerCase();
+            const langFilter = (document.getElementById('siteLangFilter').value || '').trim().toUpperCase();
+
+            const filtered = allSites.filter(s => {
+                if (search && !s.site.toLowerCase().includes(search)) return false;
+                if (langFilter && !(s.langs || []).includes(langFilter)) return false;
+                return true;
+            });
+
+            const tbody = document.getElementById('sitesTableBody');
+            tbody.innerHTML = '';
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="py-6 text-center text-gray-400">Eşleşen site bulunamadı.</td></tr>';
+                document.getElementById('sitesPagination').classList.add('hidden');
+                return;
+            }
+
+            const visible = filtered.slice(0, siteRenderLimit);
+            visible.forEach(s => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-gray-700/50 transition cursor-pointer';
+                tr.onclick = () => openSiteModal(s.site);
+
+                const langsArr = s.langs || [];
+                const shownLangs = langsArr.slice(0, 6);
+                const extraCount = langsArr.length - shownLangs.length;
+                const langBadges = shownLangs
+                    .map(l => `<span class="px-2 py-0.5 rounded text-[10px] font-bold mr-1 ${l === 'TR' ? 'bg-red-500/20 text-red-300' : l === 'DE' ? 'bg-amber-500/20 text-amber-300' : 'bg-blue-500/20 text-blue-300'}">${escapeHtml(l)}</span>`)
+                    .join('') + (extraCount > 0 ? `<span class="text-[10px] text-gray-400">+${extraCount}</span>` : '');
+
+                const statusBadge = s.status === 'ok'
+                    ? '<span class="px-2.5 py-1 rounded text-xs font-semibold bg-emerald-500/20 text-emerald-300">Aktif</span>'
+                    : '<span class="px-2.5 py-1 rounded text-xs font-semibold bg-yellow-500/20 text-yellow-300">Boş</span>';
+
+                tr.innerHTML = `
+                    <td class="py-3 px-4 font-semibold text-blue-400 underline">${escapeHtml(s.site)}</td>
+                    <td class="py-3 px-4">${langBadges || '<span class="text-gray-500">-</span>'}</td>
+                    <td class="py-3 px-4 font-bold text-emerald-400">${(Number(s.totalLocal) || 0).toLocaleString('tr-TR')} Kanal</td>
+                    <td class="py-3 px-4">${statusBadge}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            const pagination = document.getElementById('sitesPagination');
+            if (filtered.length > visible.length) {
+                pagination.classList.remove('hidden');
+                document.getElementById('sitesShownInfo').innerText = `${filtered.length} siteden ${visible.length} tanesi gösteriliyor.`;
+            } else {
+                pagination.classList.add('hidden');
+            }
+        }
+
+        function showMoreSites() {
+            siteRenderLimit += 100;
+            renderSitesTable();
+        }
+
+        function openGrabLangModal() {
+            const modal = document.getElementById('grabLangModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            if (allLanguages.length === 0) {
+                loadLanguages();
+            } else {
+                renderLangList();
+            }
+        }
+
+        function closeGrabLangModal() {
+            const modal = document.getElementById('grabLangModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function getFilteredLanguages() {
+            const q = (document.getElementById('langSearchInput')?.value || '').trim().toLowerCase();
+            return allLanguages.filter(l => {
+                if (!q) return true;
+                return (
+                    l.code.toLowerCase().includes(q) ||
+                    l.name.toLowerCase().includes(q) ||
+                    (l.englishName || '').toLowerCase().includes(q)
+                );
+            });
+        }
+
+        function renderLangList() {
+            const container = document.getElementById('langListContainer');
+            if (!container) return;
+
+            const filtered = getFilteredLanguages();
+            if (filtered.length === 0) {
+                container.innerHTML = '<p class="text-sm text-gray-400 text-center py-6">Eşleşen dil bulunamadı.</p>';
+                updateSelectedLangCount();
+                return;
+            }
+
+            container.innerHTML = filtered.map(l => {
+                const checked = selectedLangs.has(l.code) ? 'checked' : '';
+                const gzUrl = buildGithubRawUrl(l.code, 'xml.gz');
+                const xmlUrl = buildGithubRawUrl(l.code, 'xml');
+                return `
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-2 bg-gray-900/60 hover:bg-gray-900 p-3 rounded-lg border ${selectedLangs.has(l.code) ? 'border-emerald-500/50' : 'border-gray-700'}">
+                        <label class="flex items-center gap-3 cursor-pointer min-w-[240px]">
+                            <input type="checkbox" ${checked} onchange="toggleLang('${escapeHtml(l.code)}', this.checked)" class="rounded bg-gray-700 border-gray-600 text-emerald-500 w-4 h-4">
+                            <div>
+                                <span class="font-semibold text-gray-100 text-sm">${escapeHtml(l.name)}</span>
+                                <span class="ml-1.5 px-1.5 py-0.5 rounded bg-gray-800 text-emerald-300 font-mono text-[11px]">${escapeHtml(l.code.toUpperCase())}</span>
+                                <span class="ml-2 text-xs text-gray-400">${l.channelCount.toLocaleString('tr-TR')} kanal • ${l.siteCount} site</span>
+                            </div>
+                        </label>
+                        <div class="flex flex-wrap items-center gap-2 text-[11px]">
+                            <div class="flex items-center bg-gray-800 border border-gray-700 rounded px-2 py-1 max-w-full">
+                                <span class="text-gray-400 mr-1.5">XML.GZ:</span>
+                                <code class="text-blue-300 truncate max-w-[260px] sm:max-w-[340px]">${escapeHtml(gzUrl)}</code>
+                                <button type="button" onclick="copyText('${escapeHtml(gzUrl)}', this)" title="XML.GZ GitHub adresini kopyala" class="ml-2 text-gray-400 hover:text-white"><i class="fas fa-copy"></i></button>
+                            </div>
+                            <div class="flex items-center bg-gray-800 border border-gray-700 rounded px-2 py-1">
+                                <span class="text-gray-400 mr-1">XML</span>
+                                <button type="button" onclick="copyText('${escapeHtml(xmlUrl)}', this)" title="XML GitHub adresini kopyala" class="ml-1 text-gray-400 hover:text-white"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            updateSelectedLangCount();
+        }
+
+        function toggleLang(code, isChecked) {
+            if (isChecked) selectedLangs.add(code);
+            else selectedLangs.delete(code);
+            renderLangList();
+        }
+
+        function selectPresetLangs(codes) {
+            selectedLangs = new Set(codes.filter(c => allLanguages.some(l => l.code === c)));
+            renderLangList();
+        }
+
+        function selectAllVisibleLangs(selectAll) {
+            const visible = getFilteredLanguages();
+            visible.forEach(l => {
+                if (selectAll) selectedLangs.add(l.code);
+                else selectedLangs.delete(l.code);
+            });
+            renderLangList();
+        }
+
+        function updateSelectedLangCount() {
+            const count = selectedLangs.size;
+            const el = document.getElementById('selectedLangCountText');
+            const btn = document.getElementById('startGrabLangBtn');
+            if (el) el.innerText = `${count} dil seçildi`;
+            if (btn) btn.disabled = count === 0;
+        }
+
+        async function startGrabForSelectedLangs() {
+            if (selectedLangs.size === 0) return;
+            const langs = Array.from(selectedLangs);
+            const skipEmpty = document.getElementById('grabSkipEmpty').checked;
+            const discoverAndPrune = document.getElementById('grabDiscoverAndPrune').checked;
+            const days = Number(document.getElementById('grabDaysSelect').value) || 1;
+
+            closeGrabLangModal();
+            document.getElementById('grabBtn').disabled = true;
+            document.getElementById('stopGrabBtn').classList.remove('hidden');
+            appendLog(`🚀 [${langs.map(l => l.toUpperCase()).join(', ')}] dilleri için EPG veri çekme başlatılıyor...`);
+
+            try {
+                const data = await fetchJson('/api/grab', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ langs, skipEmpty, discoverAndPrune, days })
+                });
+                appendLog(`✅ ${data.message}`);
+            } catch (err) {
+                appendLog(`❌ EPG çekme hatası: ${err.message}`);
+                document.getElementById('grabBtn').disabled = false;
+                document.getElementById('stopGrabBtn').classList.add('hidden');
+            }
+        }
+
+        async function stopGrabbing() {
+            try {
+                const data = await fetchJson('/api/grab/stop', { method: 'POST' });
+                appendLog(`⏹ ${data.message || 'EPG çekme durduruluyor...'}`);
+            } catch (err) {
+                appendLog(`❌ Durdurma hatası: ${err.message}`);
+            }
+        }
+
+        async function syncWorldSites() {
+            const syncBtn = document.getElementById('syncBtn');
+            syncBtn.disabled = true;
+            appendLog('🌍 Dünya siteleri GitHub (iptv-org/epg) üzerinden yükseltiliyor...');
+            try {
+                const data = await fetchJson('/api/sites/sync', { method: 'POST' });
+                appendLog(`✅ Siteler yükseltildi: ${data.totalSites} site, ${data.totalChannels.toLocaleString('tr-TR')} kanal.`);
+                await loadStatus();
+                await loadLanguages();
+            } catch (err) {
+                appendLog(`❌ Yükseltme hatası: ${err.message}`);
+            } finally {
+                syncBtn.disabled = false;
+            }
+        }
+
+        function openValidateModal() {
+            const modal = document.getElementById('validateModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeValidateModal() {
+            const modal = document.getElementById('validateModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function updateValidationProgressUI(validating, progress) {
+            const stopBtn = document.getElementById('stopCheckBtn');
+            const box = document.getElementById('validationProgressBox');
+            if (validating) {
+                stopBtn.classList.remove('hidden');
+                box.classList.remove('hidden');
+            } else {
+                stopBtn.classList.add('hidden');
+                if (!progress) box.classList.add('hidden');
+            }
+
+            if (!progress) return;
+            const totalSites = Math.max(1, progress.totalSites || 0);
+            const completedSites = progress.completedSites || 0;
+            const totalChannels = progress.totalChannels || 0;
+            const checkedChannels = progress.checkedChannels || 0;
+
+            const pct = progress.phase === 'completed'
+                ? 100
+                : Math.min(99, Math.round((completedSites / totalSites) * 100));
+
+            document.getElementById('progressBarFill').style.width = `${pct}%`;
+            document.getElementById('progressCounts').innerText =
+                `Site: ${completedSites}/${progress.totalSites || 0} (%${pct}) • Kanal: ${checkedChannels}/${totalChannels}`;
+            document.getElementById('progressElapsed').innerText =
+                `${((progress.elapsedMs || 0) / 1000).toFixed(1)}s`;
+            document.getElementById('progressCurrentSite').innerText = progress.currentSite || '-';
+            document.getElementById('progressAdded').innerText = String(progress.addedCount || 0);
+            document.getElementById('progressRemoved').innerText = String(progress.removedCount || 0);
+            document.getElementById('progressSkipped').innerText = String(progress.skippedNoEpgCount || 0);
+
+            const spinner = document.getElementById('progressSpinner');
+            const headline = document.getElementById('progressHeadline');
+            if (progress.phase === 'completed') {
+                spinner.className = 'fas fa-check-circle text-emerald-400';
+                headline.innerText = 'Doğrulama Tamamlandı';
+            } else if (progress.phase === 'cancelled') {
+                spinner.className = 'fas fa-stop-circle text-amber-400';
+                headline.innerText = 'Doğrulama Durduruldu';
+            } else {
+                spinner.className = 'fas fa-spinner fa-spin text-indigo-400';
+                headline.innerText = `Doğrulama Devam Ediyor (${completedSites}/${progress.totalSites || 0} site)...`;
+            }
+        }
+
+        async function stopValidation() {
+            try {
+                const data = await fetchJson('/api/check-new/stop', { method: 'POST' });
+                appendLog(`⏹ ${data.message || 'Durdurma sinyali gönderildi.'}`);
+            } catch (err) {
+                appendLog(`❌ Durdurma hatası: ${err.message}`);
+            }
+        }
+
+        function renderValidationReport(data) {
+            if (!Array.isArray(data)) return;
+            const section = document.getElementById('newChannelsSection');
+            const content = document.getElementById('newChannelsContent');
+            content.innerHTML = '';
+
+            let totalAdded = 0;
+            let totalRemoved = 0;
+            let totalSkippedNoEpg = 0;
+            let warningSites = 0;
+
+            data.forEach(item => {
+                totalSkippedNoEpg += item.skippedNoEpgCount || 0;
+                if (item.status === 'warning' || item.status === 'error') {
+                    warningSites++;
+                    const div = document.createElement('div');
+                    div.className = 'bg-amber-950/40 p-4 rounded-lg border border-amber-500/30';
+                    div.innerHTML = `<h3 class="font-bold text-amber-300 text-sm">⚠️ ${escapeHtml(item.site)}: ${escapeHtml(item.reason || item.error)}</h3>`;
+                    content.appendChild(div);
+                } else if (item.status === 'ok') {
+                    totalAdded += item.addedCount || 0;
+                    totalRemoved += item.removedCount || 0;
+
+                    if ((item.addedCount || 0) > 0 || (item.removedCount || 0) > 0 || (item.skippedNoEpgCount || 0) > 0) {
+                        const div = document.createElement('div');
+                        div.className = 'bg-gray-700/40 p-4 rounded-lg border border-purple-500/20';
+                        const addedHtml = (item.addedChannels || []).map(c => `<li class="text-xs text-emerald-300">+ Eklenen: ${escapeHtml(c)}</li>`).join('');
+                        const removedHtml = (item.removedChannels || []).map(c => `<li class="text-xs text-red-300">- Çıkarılan: ${escapeHtml(c)}</li>`).join('');
+
+                        div.innerHTML = `
+                            <h3 class="font-bold text-purple-300 text-base mb-1">${escapeHtml(item.site)} (Toplam: ${Number(item.totalChannels) || 0} Kanal)</h3>
+                            <p class="text-xs text-gray-400 mb-2">+${Number(item.addedCount) || 0} Eklendi | -${Number(item.removedCount) || 0} Temizlendi | ${Number(item.skippedNoEpgCount) || 0} Yayın akışı olmadığı için reddedildi</p>
+                            <ul class="list-disc pl-5 space-y-0.5 max-h-32 overflow-y-auto">${addedHtml}${removedHtml}</ul>
+                        `;
+                        content.appendChild(div);
+                    }
+                }
+            });
+
+            if (content.children.length === 0) {
+                content.innerHTML = '<p class="text-sm text-gray-400">Tüm kontrol edilen kanalların yayın akışı aktif. Değişiklik yok.</p>';
+            }
+
+            section.classList.remove('hidden');
+            document.getElementById('newStatus').innerText = `+${totalAdded} / -${totalRemoved} (Elenen: ${totalSkippedNoEpg})`;
+            appendLog(`✅ Doğrulama Özeti: +${totalAdded} Eklendi, -${totalRemoved} temizlendi, ${totalSkippedNoEpg} yayın akışı olmayan kanal elendi, ${warningSites} uyarı.`);
+        }
+
+        function renderGrabSummary(summary) {
+            if (!summary) return;
+            const section = document.getElementById('newChannelsSection');
+            const content = document.getElementById('newChannelsContent');
+            content.innerHTML = '';
+
+            const div = document.createElement('div');
+            div.className = 'bg-gray-700/40 p-4 rounded-lg border border-emerald-500/30';
+            const addedHtml = (summary.addedChannels || []).slice(0, 100).map(c => `<li class="text-xs text-emerald-300">+ Eklenen: ${escapeHtml(c)}</li>`).join('');
+            const removedHtml = (summary.removedChannels || []).slice(0, 100).map(c => `<li class="text-xs text-red-300">- Temizlenen (0 program): ${escapeHtml(c)}</li>`).join('');
+            div.innerHTML = `
+                <h3 class="font-bold text-emerald-300 text-base mb-1">EPG Çekimi &amp; Otomatik Kanal Doğrulama Özeti</h3>
+                <p class="text-xs text-gray-300 mb-2">+${summary.addedCount || 0} Yeni Kanal Eklendi | -${summary.removedCount || 0} Ölü Kanal Silindi | ${summary.skippedNoEpgCount || 0} Boş Aday Reddedildi</p>
+                <ul class="list-disc pl-5 space-y-0.5 max-h-40 overflow-y-auto">${addedHtml}${removedHtml}</ul>
+            `;
+            content.appendChild(div);
+            section.classList.remove('hidden');
+            document.getElementById('newStatus').innerText = `+${summary.addedCount || 0} / -${summary.removedCount || 0} (EPG)`;
+        }
+
+        let renderedErrorsSignature = '';
+        let groupedErrorItems = [];
+        const expandedErrorGroups = new Set();
+
+        function buildErrorGroups(list) {
+            const groupMap = new Map();
+            for (const err of list) {
+                const key = `${err.source}|${err.site}|${err.category}|${err.message}`;
+                let g = groupMap.get(key);
+                if (!g) {
+                    g = {
+                        key,
+                        source: err.source,
+                        site: err.site,
+                        category: err.category,
+                        message: err.message,
+                        suggestion: err.suggestion,
+                        timestamp: err.timestamp,
+                        removable: Boolean(err.removable),
+                        langs: new Set(),
+                        channels: []
+                    };
+                    groupMap.set(key, g);
+                }
+                if (err.lang) g.langs.add(err.lang.toUpperCase());
+                if (err.channel || err.site_id) {
+                    g.channels.push({
+                        name: err.channel || err.site_id,
+                        site_id: err.site_id || '',
+                        lang: err.lang || ''
+                    });
+                }
+            }
+            return Array.from(groupMap.values());
+        }
+
+        function renderErrorsPanel(forceRender = false) {
+            const container = document.getElementById('errorsListContainer');
+            const filter = document.getElementById('errorCategoryFilter')?.value || '';
+            const countBadge = document.getElementById('errorsTotalBadge');
+            const headerBtn = document.getElementById('errorsJumpBtn');
+            const headerCount = document.getElementById('headerErrorCount');
+
+            const filtered = filter
+                ? currentErrors.filter(e => e.category === filter)
+                : currentErrors;
+            groupedErrorItems = buildErrorGroups(filtered);
+
+            if (countBadge) countBadge.innerText = `${groupedErrorItems.length} grup / ${currentErrors.length}`;
+            if (headerCount) headerCount.innerText = String(currentErrors.length);
+            if (headerBtn) {
+                if (currentErrors.length > 0) headerBtn.classList.remove('hidden');
+                else headerBtn.classList.add('hidden');
+            }
+
+            const sig = `${filter}|${currentErrors.length}|${currentErrors[0]?.id || ''}|${Array.from(expandedErrorGroups).join(',')}`;
+            if (!forceRender && sig === renderedErrorsSignature) {
+                return;
+            }
+            renderedErrorsSignature = sig;
+
+            if (groupedErrorItems.length === 0) {
+                container.innerHTML = '<p class="text-xs text-gray-400 py-3">Gösterilecek hata bulunmuyor.</p>';
+                return;
+            }
+
+            const catLabels = {
+                parse: 'HTML/JSON Hatası',
+                http: 'HTTP Hatası',
+                timeout: 'Zaman Aşımı',
+                network: 'Ağ/DNS Hatası',
+                empty: '0 Program',
+                config: 'Konfigürasyon'
+            };
+
+            container.innerHTML = groupedErrorItems.slice(0, 80).map((grp, idx) => {
+                const isExpanded = expandedErrorGroups.has(grp.key);
+                const previewChannels = isExpanded ? grp.channels : grp.channels.slice(0, 6);
+                const langBadges = Array.from(grp.langs).slice(0, 5).map(l =>
+                    `<span class="px-1.5 py-0.5 rounded bg-gray-800 text-gray-300 font-mono text-[10px]">${escapeHtml(l)}</span>`
+                ).join('');
+                const singleChannel = grp.channels.length === 1 ? grp.channels[0] : null;
+                const canDeleteSingle = Boolean(singleChannel && singleChannel.site_id && grp.removable);
+
+                const channelsChips = grp.channels.length > 0
+                    ? `<div class="flex flex-wrap items-center gap-1.5 mt-1">
+                        ${previewChannels.map(ch => `
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gray-800/90 border border-gray-700 text-[11px] text-yellow-200">
+                                ${escapeHtml(ch.name)}
+                                ${grp.removable && ch.site_id ? `<button type="button" onclick="removeBrokenChannel('${escapeHtml(grp.site)}', '${escapeHtml(ch.site_id)}', '${escapeHtml(ch.lang)}')" title="Bu kanalı listeden sil" class="text-red-400 hover:text-red-300 ml-0.5"><i class="fas fa-times"></i></button>` : ''}
+                            </span>
+                        `).join('')}
+                        ${grp.channels.length > 6 ? `<button type="button" onclick="toggleErrorGroupExpand(${idx})" class="text-[11px] text-blue-300 hover:text-blue-200 underline ml-1">${isExpanded ? 'Daha az göster' : `+${grp.channels.length - 6} kanal daha...`}</button>` : ''}
+                    </div>`
+                    : '';
+
+                return `
+                    <div class="bg-gray-900/70 p-3.5 rounded-lg border border-rose-500/25 flex flex-col md:flex-row md:items-start justify-between gap-3">
+                        <div class="space-y-1.5 min-w-0 flex-1">
+                            <div class="flex flex-wrap items-center gap-2 text-xs">
+                                <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-semibold">${escapeHtml(catLabels[grp.category] || grp.category)}</span>
+                                <span class="font-bold text-blue-300">${escapeHtml(grp.site)}</span>
+                                ${grp.channels.length > 1 ? `<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold">${grp.channels.length} kanal etkilendi</span>` : ''}
+                                ${langBadges}
+                                <span class="text-gray-500 font-mono text-[10px]">${escapeHtml(grp.timestamp)} (${escapeHtml(grp.source)})</span>
+                            </div>
+                            <p class="text-xs text-rose-200 font-mono break-all">${escapeHtml(grp.message)}</p>
+                            ${channelsChips}
+                            <p class="text-xs text-emerald-300/90"><i class="fas fa-lightbulb mr-1 text-amber-400"></i><strong>Çözüm:</strong> ${escapeHtml(grp.suggestion)}</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 shrink-0">
+                            ${grp.site && grp.site !== 'github' && grp.site !== 'genel' && grp.site !== 'epg-grab'
+                                ? `<button onclick="retrySiteValidation('${escapeHtml(grp.site)}')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-2.5 py-1.5 rounded text-xs"><i class="fas fa-redo mr-1"></i>Siteyi Dene</button>`
+                                : ''}
+                            ${canDeleteSingle
+                                ? `<button onclick="removeBrokenChannel('${escapeHtml(grp.site)}', '${escapeHtml(singleChannel.site_id)}', '${escapeHtml(singleChannel.lang || '')}')" class="bg-red-700 hover:bg-red-800 text-white px-2.5 py-1.5 rounded text-xs"><i class="fas fa-trash mr-1"></i>Kanalı Sil</button>`
+                                : ''}
+                            <button onclick="dismissErrorGroup(${idx})" title="Bu hata grubunu listeden kaldır" class="bg-gray-700 hover:bg-gray-600 text-gray-200 px-2.5 py-1.5 rounded text-xs"><i class="fas fa-check mr-1"></i>Kapat</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleErrorGroupExpand(idx) {
+            const grp = groupedErrorItems[idx];
+            if (!grp) return;
+            if (expandedErrorGroups.has(grp.key)) expandedErrorGroups.delete(grp.key);
+            else expandedErrorGroups.add(grp.key);
+            renderErrorsPanel(true);
+        }
+
+        async function dismissErrorGroup(idx) {
+            const grp = groupedErrorItems[idx];
+            if (!grp) return;
+            try {
+                await fetchJson('/api/errors/dismiss', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ site: grp.site, category: grp.category, message: grp.message })
+                });
+                currentErrors = currentErrors.filter(
+                    e => !(e.site === grp.site && e.category === grp.category && e.message === grp.message)
+                );
+                expandedErrorGroups.delete(grp.key);
+                renderErrorsPanel(true);
+            } catch (err) {
+                appendLog(`❌ Hata kapatılamadı: ${err.message}`);
+            }
+        }
+
+        async function clearServerErrors() {
+            try {
+                await fetchJson('/api/errors/clear', { method: 'POST' });
+                currentErrors = [];
+                expandedErrorGroups.clear();
+                renderErrorsPanel(true);
+            } catch (err) {
+                appendLog(`❌ Hata listesi temizlenemedi: ${err.message}`);
+            }
+        }
+
+        async function removeBrokenChannel(site, siteId, lang) {
+            try {
+                await fetchJson('/api/sites/remove-channel', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ site, site_id: siteId, lang })
+                });
+                currentErrors = currentErrors.filter(e => !(e.site === site && e.site_id === siteId));
+                renderErrorsPanel(true);
+                loadStatus();
+                appendLog(`🗑️ [${site}] ${siteId} kanalı listeden çıkarıldı.`);
+            } catch (err) {
+                appendLog(`❌ Kanal silme hatası: ${err.message}`);
+            }
+        }
+
+        async function retrySiteValidation(site) {
+            try {
+                const data = await fetchJson('/api/check-new', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sites: [site], mode: 'full', verifyEpg: true })
+                });
+                appendLog(`🔄 [${site}] tekil doğrulama başlatıldı: ${data.message}`);
+                document.getElementById('newStatus').innerText = 'Doğrulanıyor...';
+            } catch (err) {
+                appendLog(`❌ Site doğrulama hatası: ${err.message}`);
+            }
+        }
+
+        async function runValidation() {
+            const langsVal = document.getElementById('validateLangsInput').value.trim();
+            const sitesVal = document.getElementById('validateSitesInput').value.trim();
+            const verifyEpg = document.getElementById('validateVerifyEpg').checked;
+            const modeInput = document.querySelector('input[name="validateMode"]:checked');
+            const mode = modeInput ? modeInput.value : 'fast';
+
+            const langs = langsVal ? langsVal.split(',').map(s => s.trim()).filter(Boolean) : undefined;
+            const sites = sitesVal ? sitesVal.split(',').map(s => s.trim()).filter(Boolean) : undefined;
+
+            closeValidateModal();
+
+            const checkBtn = document.getElementById('checkBtn');
+            checkBtn.disabled = true;
+            updateValidationProgressUI(true, {
+                phase: 'scanning',
+                completedSites: 0,
+                totalSites: 0,
+                checkedChannels: 0,
+                totalChannels: 0,
+                currentSite: 'Başlatılıyor...',
+                addedCount: 0,
+                removedCount: 0,
+                skippedNoEpgCount: 0,
+                elapsedMs: 0
+            });
+            document.getElementById('newStatus').innerText = 'Doğrulanıyor...';
+
+            try {
+                const data = await fetchJson('/api/check-new', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ langs, sites, verifyEpg, mode })
+                });
+                appendLog(`🛡️ ${data.message}`);
+            } catch (err) {
+                appendLog(`❌ Doğrulama başlatma hatası: ${err.message}`);
+                document.getElementById('newStatus').innerText = 'Hata';
+                checkBtn.disabled = false;
+                document.getElementById('stopCheckBtn').classList.add('hidden');
+            }
+        }
+
+        async function openSiteModal(siteName) {
+            document.getElementById('modalTitle').innerText = `${siteName} - Kanallar`;
+            const tbody = document.getElementById('modalTableBody');
+            tbody.innerHTML = '<tr><td colspan="4" class="py-4 text-center text-gray-400">Yükleniyor...</td></tr>';
+            const modal = document.getElementById('channelModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            try {
+                const langFilter = document.getElementById('siteLangFilter').value || '';
+                const url = langFilter
+                    ? `/api/site-channels/${encodeURIComponent(siteName)}?lang=${encodeURIComponent(langFilter)}`
+                    : `/api/site-channels/${encodeURIComponent(siteName)}`;
+                const res = await fetch(url);
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Kanallar yüklenemedi');
+
+                tbody.innerHTML = '';
+                if (!data.channels || data.channels.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" class="py-4 text-center text-gray-400">Kanal bulunamadı.</td></tr>';
+                    return;
+                }
+                data.channels.slice(0, 500).forEach(ch => {
+                    const tr = document.createElement('tr');
+                    const lang = String(ch.lang || '').toUpperCase();
+                    tr.innerHTML = `
+                        <td class="py-2 px-3 font-semibold text-yellow-300">${escapeHtml(ch.name)}</td>
+                        <td class="py-2 px-3 font-mono text-gray-300">${escapeHtml(ch.site_id)}</td>
+                        <td class="py-2 px-3 font-mono text-gray-400">${escapeHtml(ch.xmltv_id || '-')}</td>
+                        <td class="py-2 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${lang === 'TR' ? 'bg-red-500/20 text-red-300' : 'bg-blue-500/20 text-blue-300'}">${escapeHtml(lang)}</span></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                if (data.channels.length > 500) {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td colspan="4" class="py-3 text-center text-gray-400">İlk 500 kanal gösteriliyor (Toplam: ${data.channels.length}).</td>`;
+                    tbody.appendChild(tr);
+                }
+            } catch (err) {
+                tbody.innerHTML = `<tr><td colspan="4" class="py-4 text-center text-red-400">Hata: ${escapeHtml(err.message)}</td></tr>`;
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('channelModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        let wasGrabbing = false;
+        let wasValidating = false;
+        let wasSyncing = false;
+
+        async function pollLogs() {
+            try {
+                const res = await fetch('/api/logs');
+                if (!res.ok) return;
+                const data = await res.json();
+                if (data.logs && data.logs.length > 0) {
+                    const output = document.getElementById('logOutput');
+                    output.innerText = data.logs.join('\n');
+                    output.scrollTop = output.scrollHeight;
+                }
+                const grabbing = Boolean(data.isGrabbing);
+                const validating = Boolean(data.isValidating);
+                const syncing = Boolean(data.isSyncing);
+                document.getElementById('grabBtn').disabled = grabbing;
+                document.getElementById('checkBtn').disabled = validating;
+                document.getElementById('syncBtn').disabled = syncing;
+                const stopGrabBtn = document.getElementById('stopGrabBtn');
+                if (grabbing) stopGrabBtn.classList.remove('hidden');
+                else stopGrabBtn.classList.add('hidden');
+
+                updateValidationProgressUI(validating, data.validationProgress);
+
+                if (Array.isArray(data.errors)) {
+                    currentErrors = data.errors;
+                    renderErrorsPanel();
+                }
+
+                if (wasValidating && !validating) {
+                    if (data.lastValidationError) {
+                        document.getElementById('newStatus').innerText = 'Hata';
+                    } else if (data.lastValidationReport) {
+                        renderValidationReport(data.lastValidationReport);
+                    }
+                    loadStatus();
+                    loadLanguages();
+                }
+                if (wasGrabbing && !grabbing) {
+                    if (data.lastGrabSummary) {
+                        renderGrabSummary(data.lastGrabSummary);
+                    }
+                    loadStatus();
+                    loadLanguages();
+                }
+                if (wasSyncing && !syncing) {
+                    loadStatus();
+                    loadLanguages();
+                }
+                wasGrabbing = grabbing;
+                wasValidating = validating;
+                wasSyncing = syncing;
+            } catch (e) {}
+        }
+
+        setInterval(pollLogs, 1500);
+
+        function appendLog(text) {
+            const output = document.getElementById('logOutput');
+            output.innerText += '\n' + text;
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function clearLogs() {
+            document.getElementById('logOutput').innerText = 'Loglar temizlendi.';
+        }
+
+        window.onload = () => {
+            loadStatus();
+            loadLanguages();
+            pollLogs();
+        };
+    </script>
+</body>
+</html>

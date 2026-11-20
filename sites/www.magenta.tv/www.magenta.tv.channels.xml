@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channels>
+  <channel site="www.magenta.tv" site_id="818976808328" lang="de" xmltv_id="818976808328">Moviedome Family</channel>
+  <channel site="www.magenta.tv" site_id="832599591955" lang="de" xmltv_id="832599591955">DEFA TV</channel>
+  <channel site="www.magenta.tv" site_id="832597544026" lang="de" xmltv_id="832597544026">Himmlisches Kino</channel>
+  <channel site="www.magenta.tv" site_id="832594984414" lang="de" xmltv_id="832594984414">Komödien - Rakuten TV</channel>
+  <channel site="www.magenta.tv" site_id="832599591956" lang="de" xmltv_id="832599591956">Actionfilme - Rakuten TV</channel>
+  <channel site="www.magenta.tv" site_id="832592936233" lang="de" xmltv_id="832592936233">Thriller - Rakuten TV</channel>
+  <channel site="www.magenta.tv" site_id="818978856386" lang="de" xmltv_id="818978856386">ARD Plus Krimi</channel>
+  <channel site="www.magenta.tv" site_id="833127976088" lang="de" xmltv_id="833127976088">Ladykracher powered by myspass</channel>
+  <channel site="www.magenta.tv" site_id="818980904430" lang="de" xmltv_id="818980904430">ARD Plus Lindenstraße</channel>
+  <channel site="www.magenta.tv" site_id="833127464081" lang="de" xmltv_id="833127464081">Pastewka powered by myspass</channel>
+  <channel site="www.magenta.tv" site_id="818983464048" lang="de" xmltv_id="818983464048">Strongman Champions League</channel>
+  <channel site="www.magenta.tv" site_id="818977832315" lang="de" xmltv_id="818977832315">wedotv Sports</channel>
+  <channel site="www.magenta.tv" site_id="832599079997" lang="de" xmltv_id="832599079997">ARD PLUS Zoo</channel>
+  <channel site="www.magenta.tv" site_id="818978856401" lang="de" xmltv_id="818978856401">wedotv True Stories</channel>
+  <channel site="www.magenta.tv" site_id="818978856402" lang="de" xmltv_id="818978856402">Just Cooking</channel>
+  <channel site="www.magenta.tv" site_id="818983976058" lang="de" xmltv_id="818983976058">DFB.TV</channel>
+  <channel site="www.magenta.tv" site_id="801087528034" lang="de" xmltv_id="801087528034">AXN Black (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="801089576063" lang="de" xmltv_id="801089576063">AXN White (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="818022440343" lang="de" xmltv_id="818022440343">Sky Sport NFL</channel>
+  <channel site="www.magenta.tv" site_id="818983976059" lang="de" xmltv_id="818983976059">DFB.TV (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="259549736358" lang="de" xmltv_id="259549736358">RTL</channel>
+  <channel site="www.magenta.tv" site_id="259549736360" lang="de" xmltv_id="259549736360">Das Erste</channel>
+  <channel site="www.magenta.tv" site_id="259728423995" lang="de" xmltv_id="259728423995">RTL</channel>
+  <channel site="www.magenta.tv" site_id="262264872014" lang="de" xmltv_id="262264872014">ZDF</channel>
+  <channel site="www.magenta.tv" site_id="262269992391" lang="de" xmltv_id="262269992391">SAT.1</channel>
+  <channel site="www.magenta.tv" site_id="262270504164" lang="de" xmltv_id="262270504164">SAT.1</channel>
+  <channel site="www.magenta.tv" site_id="262270504165" lang="de" xmltv_id="262270504165">ProSieben</channel>
+  <channel site="www.magenta.tv" site_id="262277160057" lang="de" xmltv_id="262277160057">RTLZWEI</channel>
+  <channel site="www.magenta.tv" site_id="262277160060" lang="de" xmltv_id="262277160060">Super RTL</channel>
+  <channel site="www.magenta.tv" site_id="262280744415" lang="de" xmltv_id="262280744415">Kabel Eins</channel>
+  <channel site="www.magenta.tv" site_id="262281768126" lang="de" xmltv_id="262281768126">KiKA</channel>
+  <channel site="www.magenta.tv" site_id="262282280173" lang="de" xmltv_id="262282280173">VOX</channel>
+  <channel site="www.magenta.tv" site_id="262729768194" lang="de" xmltv_id="262729768194">ZDFneo</channel>
+  <channel site="www.magenta.tv" site_id="262729768197" lang="de" xmltv_id="262729768197">Sport 1 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="262729768198" lang="de" xmltv_id="262729768198">Warner TV Serie</channel>
+  <channel site="www.magenta.tv" site_id="262729768199" lang="de" xmltv_id="262729768199">phoenix</channel>
+  <channel site="www.magenta.tv" site_id="262729768201" lang="de" xmltv_id="262729768201">13TH STREET</channel>
+  <channel site="www.magenta.tv" site_id="262729768202" lang="de" xmltv_id="262729768202">WDR Fernsehen Köln</channel>
+  <channel site="www.magenta.tv" site_id="262730280151" lang="de" xmltv_id="262730280151">Warner TV Film</channel>
+  <channel site="www.magenta.tv" site_id="262730280155" lang="de" xmltv_id="262730280155">3sat</channel>
+  <channel site="www.magenta.tv" site_id="262730280165" lang="de" xmltv_id="262730280165">Warner TV Comedy</channel>
+  <channel site="www.magenta.tv" site_id="262730792005" lang="de" xmltv_id="262730792005">BR Fernsehen Süd</channel>
+  <channel site="www.magenta.tv" site_id="262731304141" lang="de" xmltv_id="262731304141">Eurosport 1</channel>
+  <channel site="www.magenta.tv" site_id="262731304143" lang="de" xmltv_id="262731304143">ntv</channel>
+  <channel site="www.magenta.tv" site_id="262731304145" lang="de" xmltv_id="262731304145">WELT</channel>
+  <channel site="www.magenta.tv" site_id="274350120287" lang="de" xmltv_id="274350120287">VOX</channel>
+  <channel site="www.magenta.tv" site_id="274350120288" lang="de" xmltv_id="274350120288">hr-fernsehen</channel>
+  <channel site="www.magenta.tv" site_id="274350120289" lang="de" xmltv_id="274350120289">Kabel Eins</channel>
+  <channel site="www.magenta.tv" site_id="274350120290" lang="de" xmltv_id="274350120290">RTL Crime</channel>
+  <channel site="www.magenta.tv" site_id="274350120291" lang="de" xmltv_id="274350120291">SWR Fernsehen BW</channel>
+  <channel site="www.magenta.tv" site_id="274351656120" lang="de" xmltv_id="274351656120">DMAX</channel>
+  <channel site="www.magenta.tv" site_id="274351656121" lang="de" xmltv_id="274351656121">ProSieben FUN</channel>
+  <channel site="www.magenta.tv" site_id="274351656122" lang="de" xmltv_id="274351656122">NITRO</channel>
+  <channel site="www.magenta.tv" site_id="274351656123" lang="de" xmltv_id="274351656123">rbb fernsehen Berlin</channel>
+  <channel site="www.magenta.tv" site_id="274351656124" lang="de" xmltv_id="274351656124">WELT</channel>
+  <channel site="www.magenta.tv" site_id="274351656125" lang="de" xmltv_id="274351656125">Eurosport 1</channel>
+  <channel site="www.magenta.tv" site_id="274351656126" lang="de" xmltv_id="274351656126">RTLup</channel>
+  <channel site="www.magenta.tv" site_id="274351656127" lang="de" xmltv_id="274351656127">National Geographic</channel>
+  <channel site="www.magenta.tv" site_id="274351656128" lang="de" xmltv_id="274351656128">Eurosport 2</channel>
+  <channel site="www.magenta.tv" site_id="274352168016" lang="de" xmltv_id="274352168016">ntv</channel>
+  <channel site="www.magenta.tv" site_id="274352168017" lang="de" xmltv_id="274352168017">SAT.1 GOLD</channel>
+  <channel site="www.magenta.tv" site_id="274352168018" lang="de" xmltv_id="274352168018">MDR-Fernsehen Sachsen</channel>
+  <channel site="www.magenta.tv" site_id="274352679970" lang="de" xmltv_id="274352679970">ProSieben</channel>
+  <channel site="www.magenta.tv" site_id="274352679971" lang="de" xmltv_id="274352679971">Radio Bremen TV</channel>
+  <channel site="www.magenta.tv" site_id="274352679972" lang="de" xmltv_id="274352679972">ARTE</channel>
+  <channel site="www.magenta.tv" site_id="274352679973" lang="de" xmltv_id="274352679973">RTLZWEI</channel>
+  <channel site="www.magenta.tv" site_id="274352679974" lang="de" xmltv_id="274352679974">SAT.1 emotions</channel>
+  <channel site="www.magenta.tv" site_id="274352679975" lang="de" xmltv_id="274352679975">NDR Fernsehen Niedersachsen</channel>
+  <channel site="www.magenta.tv" site_id="274352679976" lang="de" xmltv_id="274352679976">SR Fernsehen</channel>
+  <channel site="www.magenta.tv" site_id="274352679977" lang="de" xmltv_id="274352679977">Super RTL</channel>
+  <channel site="www.magenta.tv" site_id="389263912217" lang="de" xmltv_id="389263912217">NITRO</channel>
+  <channel site="www.magenta.tv" site_id="389263912218" lang="de" xmltv_id="389263912218">ÜLKE TV</channel>
+  <channel site="www.magenta.tv" site_id="389263912219" lang="de" xmltv_id="389263912219">Schlagerparadies.TV</channel>
+  <channel site="www.magenta.tv" site_id="389263912220" lang="de" xmltv_id="389263912220">Magenta Musik 1</channel>
+  <channel site="www.magenta.tv" site_id="389263912221" lang="de" xmltv_id="389263912221">Sky Sport 5</channel>
+  <channel site="www.magenta.tv" site_id="389263912222" lang="de" xmltv_id="389263912222">Sport 5 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389263912223" lang="de" xmltv_id="389263912223">KinoweltTV</channel>
+  <channel site="www.magenta.tv" site_id="389263912224" lang="de" xmltv_id="389263912224">Sky Sport Bundesliga 7</channel>
+  <channel site="www.magenta.tv" site_id="389263912226" lang="de" xmltv_id="389263912226">sixx</channel>
+  <channel site="www.magenta.tv" site_id="389263912227" lang="de" xmltv_id="389263912227">MagentaSport</channel>
+  <channel site="www.magenta.tv" site_id="389263912228" lang="de" xmltv_id="389263912228">Heimatkanal</channel>
+  <channel site="www.magenta.tv" site_id="389263912229" lang="de" xmltv_id="389263912229">TLC</channel>
+  <channel site="www.magenta.tv" site_id="389263912230" lang="de" xmltv_id="389263912230">Cartoon Network (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389263912231" lang="de" xmltv_id="389263912231">Sky Sport Golf</channel>
+  <channel site="www.magenta.tv" site_id="389263912232" lang="de" xmltv_id="389263912232">Sky Sport Premier League</channel>
+  <channel site="www.magenta.tv" site_id="389263912233" lang="de" xmltv_id="389263912233">Bibel TV</channel>
+  <channel site="www.magenta.tv" site_id="389263912234" lang="de" xmltv_id="389263912234">More Than Sports TV</channel>
+  <channel site="www.magenta.tv" site_id="389263912235" lang="de" xmltv_id="389263912235">SAT.1 GOLD</channel>
+  <channel site="www.magenta.tv" site_id="389263912236" lang="de" xmltv_id="389263912236">Sky Sport F1</channel>
+  <channel site="www.magenta.tv" site_id="389263912237" lang="de" xmltv_id="389263912237">Sky Sport Bundesliga 1</channel>
+  <channel site="www.magenta.tv" site_id="389263912238" lang="de" xmltv_id="389263912238">Kabel Eins Doku</channel>
+  <channel site="www.magenta.tv" site_id="389263912240" lang="de" xmltv_id="389263912240">Sport 18 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389263912242" lang="de" xmltv_id="389263912242">Sky Sport 1</channel>
+  <channel site="www.magenta.tv" site_id="389263912243" lang="de" xmltv_id="389263912243">Warner TV Comedy (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389263912244" lang="de" xmltv_id="389263912244">National Geographic Wild</channel>
+  <channel site="www.magenta.tv" site_id="389263912245" lang="de" xmltv_id="389263912245">DF1</channel>
+  <channel site="www.magenta.tv" site_id="389263912247" lang="de" xmltv_id="389263912247">TV8 Int</channel>
+  <channel site="www.magenta.tv" site_id="389263912248" lang="de" xmltv_id="389263912248">Jukebox</channel>
+  <channel site="www.magenta.tv" site_id="389263912249" lang="de" xmltv_id="389263912249">Shop LC</channel>
+  <channel site="www.magenta.tv" site_id="389263912250" lang="de" xmltv_id="389263912250">Sky Sport Mix</channel>
+  <channel site="www.magenta.tv" site_id="389264424226" lang="de" xmltv_id="389264424226">TV5MONDE Europe</channel>
+  <channel site="www.magenta.tv" site_id="389264424227" lang="de" xmltv_id="389264424227">QVC</channel>
+  <channel site="www.magenta.tv" site_id="389264424228" lang="de" xmltv_id="389264424228">Sky Sci-Fi</channel>
+  <channel site="www.magenta.tv" site_id="389264424230" lang="de" xmltv_id="389264424230">Sport 3 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389264424231" lang="de" xmltv_id="389264424231">Kabel Eins CLASSICS</channel>
+  <channel site="www.magenta.tv" site_id="389264424232" lang="de" xmltv_id="389264424232">VOXup</channel>
+  <channel site="www.magenta.tv" site_id="389264424233" lang="de" xmltv_id="389264424233">ARD-alpha</channel>
+  <channel site="www.magenta.tv" site_id="389264424234" lang="de" xmltv_id="389264424234">Welt der Wunder</channel>
+  <channel site="www.magenta.tv" site_id="389264424235" lang="de" xmltv_id="389264424235">Warner TV Film (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389264424236" lang="de" xmltv_id="389264424236">Magenta Musik 2</channel>
+  <channel site="www.magenta.tv" site_id="389264424237" lang="de" xmltv_id="389264424237">Sky Sport Bundesliga</channel>
+  <channel site="www.magenta.tv" site_id="389264424238" lang="de" xmltv_id="389264424238">ProSieben MAXX</channel>
+  <channel site="www.magenta.tv" site_id="389264424239" lang="de" xmltv_id="389264424239">Stingray Classica</channel>
+  <channel site="www.magenta.tv" site_id="389264424240" lang="de" xmltv_id="389264424240">Sky Sport Bundesliga 4</channel>
+  <channel site="www.magenta.tv" site_id="389264424241" lang="de" xmltv_id="389264424241">SPORTDIGITAL FUSSBALL</channel>
+  <channel site="www.magenta.tv" site_id="389264424242" lang="de" xmltv_id="389264424242">Sky Sport Bundesliga 6</channel>
+  <channel site="www.magenta.tv" site_id="389264424243" lang="de" xmltv_id="389264424243">beIN Movies Turk</channel>
+  <channel site="www.magenta.tv" site_id="389264424244" lang="de" xmltv_id="389264424244">Sport 17 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389264424245" lang="de" xmltv_id="389264424245">TOGGO plus</channel>
+  <channel site="www.magenta.tv" site_id="389264424246" lang="de" xmltv_id="389264424246">ONE</channel>
+  <channel site="www.magenta.tv" site_id="389264424248" lang="de" xmltv_id="389264424248">ONE MUSIC TELEVISION</channel>
+  <channel site="www.magenta.tv" site_id="389264424249" lang="de" xmltv_id="389264424249">wedotv Movies</channel>
+  <channel site="www.magenta.tv" site_id="389264424250" lang="de" xmltv_id="389264424250">Discovery Channel</channel>
+  <channel site="www.magenta.tv" site_id="389264424252" lang="de" xmltv_id="389264424252">Habertürk TV</channel>
+  <channel site="www.magenta.tv" site_id="389264424253" lang="de" xmltv_id="389264424253">RTLup</channel>
+  <channel site="www.magenta.tv" site_id="389264424254" lang="de" xmltv_id="389264424254">RiC</channel>
+  <channel site="www.magenta.tv" site_id="389264424255" lang="de" xmltv_id="389264424255">Sky Sport News</channel>
+  <channel site="www.magenta.tv" site_id="389264424256" lang="de" xmltv_id="389264424256">Universal TV</channel>
+  <channel site="www.magenta.tv" site_id="389264424257" lang="de" xmltv_id="389264424257">RTL Passion</channel>
+  <channel site="www.magenta.tv" site_id="389264424258" lang="de" xmltv_id="389264424258">Warner TV Serie (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389264424259" lang="de" xmltv_id="389264424259">Sky Cinema Classics</channel>
+  <channel site="www.magenta.tv" site_id="389264424261" lang="de" xmltv_id="389264424261">TeleBom/TeleDom</channel>
+  <channel site="www.magenta.tv" site_id="389264424262" lang="de" xmltv_id="389264424262">Romance TV</channel>
+  <channel site="www.magenta.tv" site_id="389264424263" lang="de" xmltv_id="389264424263">The HISTORY Channel</channel>
+  <channel site="www.magenta.tv" site_id="389264424264" lang="de" xmltv_id="389264424264">Sky Atlantic</channel>
+  <channel site="www.magenta.tv" site_id="389264424268" lang="de" xmltv_id="389264424268">OUTtv</channel>
+  <channel site="www.magenta.tv" site_id="389264424269" lang="de" xmltv_id="389264424269">Sport 4 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389264424271" lang="de" xmltv_id="389264424271">Sky Sport 3</channel>
+  <channel site="www.magenta.tv" site_id="389264424272" lang="de" xmltv_id="389264424272">Sky Krimi</channel>
+  <channel site="www.magenta.tv" site_id="389264424273" lang="de" xmltv_id="389264424273">Espreso</channel>
+  <channel site="www.magenta.tv" site_id="389264424274" lang="de" xmltv_id="389264424274">Stingray iConcerts</channel>
+  <channel site="www.magenta.tv" site_id="389264936243" lang="de" xmltv_id="389264936243">Sky Sport Tennis</channel>
+  <channel site="www.magenta.tv" site_id="389264936244" lang="de" xmltv_id="389264936244">13TH STREET (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389264936247" lang="de" xmltv_id="389264936247">Sky Sport 9</channel>
+  <channel site="www.magenta.tv" site_id="389264936248" lang="de" xmltv_id="389264936248">Sky Cinema Action</channel>
+  <channel site="www.magenta.tv" site_id="389264936249" lang="de" xmltv_id="389264936249">Sport 8 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389264936251" lang="de" xmltv_id="389264936251">Sport 2 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389264936252" lang="de" xmltv_id="389264936252">Sky Sport 2</channel>
+  <channel site="www.magenta.tv" site_id="389264936253" lang="de" xmltv_id="389264936253">AXN Black</channel>
+  <channel site="www.magenta.tv" site_id="389264936254" lang="de" xmltv_id="389264936254">Ballermann TV</channel>
+  <channel site="www.magenta.tv" site_id="389264936255" lang="de" xmltv_id="389264936255">Cartoon Network</channel>
+  <channel site="www.magenta.tv" site_id="389264936256" lang="de" xmltv_id="389264936256">Sky Sport Bundesliga 10</channel>
+  <channel site="www.magenta.tv" site_id="389264936257" lang="de" xmltv_id="389264936257">Show Turk</channel>
+  <channel site="www.magenta.tv" site_id="389264936258" lang="de" xmltv_id="389264936258">Sky Sport 6</channel>
+  <channel site="www.magenta.tv" site_id="389264936259" lang="de" xmltv_id="389264936259">BonGusto</channel>
+  <channel site="www.magenta.tv" site_id="389264936260" lang="de" xmltv_id="389264936260">Sky Sport Bundesliga 8</channel>
+  <channel site="www.magenta.tv" site_id="389264936261" lang="de" xmltv_id="389264936261">ANIXE HD Serie</channel>
+  <channel site="www.magenta.tv" site_id="389264936262" lang="de" xmltv_id="389264936262">Red Bull TV Motorsport</channel>
+  <channel site="www.magenta.tv" site_id="389264936263" lang="de" xmltv_id="389264936263">eSportsONE</channel>
+  <channel site="www.magenta.tv" site_id="389264936264" lang="de" xmltv_id="389264936264">Animal Planet</channel>
+  <channel site="www.magenta.tv" site_id="389264936266" lang="de" xmltv_id="389264936266">Sky Cinema Premiere</channel>
+  <channel site="www.magenta.tv" site_id="389264936267" lang="de" xmltv_id="389264936267">Rai 3</channel>
+  <channel site="www.magenta.tv" site_id="389264936269" lang="de" xmltv_id="389264936269">Stingray DJAZZ</channel>
+  <channel site="www.magenta.tv" site_id="389264936270" lang="de" xmltv_id="389264936270">Bergblick</channel>
+  <channel site="www.magenta.tv" site_id="389264936271" lang="de" xmltv_id="389264936271">Playboy Europe</channel>
+  <channel site="www.magenta.tv" site_id="389264936272" lang="de" xmltv_id="389264936272">OstWest</channel>
+  <channel site="www.magenta.tv" site_id="389264936273" lang="de" xmltv_id="389264936273">Sky One</channel>
+  <channel site="www.magenta.tv" site_id="389264936278" lang="de" xmltv_id="389264936278">iTVN</channel>
+  <channel site="www.magenta.tv" site_id="389264936279" lang="de" xmltv_id="389264936279">Kabel Eins Doku</channel>
+  <channel site="www.magenta.tv" site_id="389264936281" lang="de" xmltv_id="389264936281">N24 Doku</channel>
+  <channel site="www.magenta.tv" site_id="389265448044" lang="de" xmltv_id="389265448044">MagentaTV Info</channel>
+  <channel site="www.magenta.tv" site_id="389265448045" lang="de" xmltv_id="389265448045">Comedy Central</channel>
+  <channel site="www.magenta.tv" site_id="389265448046" lang="de" xmltv_id="389265448046">Sky Sport Kompakt 1</channel>
+  <channel site="www.magenta.tv" site_id="389265448047" lang="de" xmltv_id="389265448047">Motorvision+</channel>
+  <channel site="www.magenta.tv" site_id="389265448048" lang="de" xmltv_id="389265448048">tagesschau24</channel>
+  <channel site="www.magenta.tv" site_id="389265448049" lang="de" xmltv_id="389265448049">Marco Polo TV</channel>
+  <channel site="www.magenta.tv" site_id="389265448050" lang="de" xmltv_id="389265448050">ANIXE+</channel>
+  <channel site="www.magenta.tv" site_id="389265448051" lang="de" xmltv_id="389265448051">CNN International</channel>
+  <channel site="www.magenta.tv" site_id="389265448052" lang="de" xmltv_id="389265448052">SPORT1</channel>
+  <channel site="www.magenta.tv" site_id="389265448053" lang="de" xmltv_id="389265448053">HGTV</channel>
+  <channel site="www.magenta.tv" site_id="389265448054" lang="de" xmltv_id="389265448054">FREEDOM</channel>
+  <channel site="www.magenta.tv" site_id="389265448055" lang="de" xmltv_id="389265448055">TLC</channel>
+  <channel site="www.magenta.tv" site_id="389265448056" lang="de" xmltv_id="389265448056">SCHLAGER DELUXE</channel>
+  <channel site="www.magenta.tv" site_id="389265448057" lang="de" xmltv_id="389265448057">DMF</channel>
+  <channel site="www.magenta.tv" site_id="389265448058" lang="de" xmltv_id="389265448058">Sky Sport Bundesliga 9</channel>
+  <channel site="www.magenta.tv" site_id="389265448059" lang="de" xmltv_id="389265448059">ProSieben MAXX</channel>
+  <channel site="www.magenta.tv" site_id="389265448060" lang="de" xmltv_id="389265448060">MTV</channel>
+  <channel site="www.magenta.tv" site_id="389265448061" lang="de" xmltv_id="389265448061">Volksmusik.TV</channel>
+  <channel site="www.magenta.tv" site_id="389265448062" lang="de" xmltv_id="389265448062">Sky Sport Bundesliga 5</channel>
+  <channel site="www.magenta.tv" site_id="389265448063" lang="de" xmltv_id="389265448063">Sport 11 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389265448065" lang="de" xmltv_id="389265448065">123.live</channel>
+  <channel site="www.magenta.tv" site_id="389265448066" lang="de" xmltv_id="389265448066">SPORT1</channel>
+  <channel site="www.magenta.tv" site_id="389265448067" lang="de" xmltv_id="389265448067">Sport 14 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389265448068" lang="de" xmltv_id="389265448068">Sky Sport Bundesliga 3</channel>
+  <channel site="www.magenta.tv" site_id="389265448069" lang="de" xmltv_id="389265448069">Kinomir</channel>
+  <channel site="www.magenta.tv" site_id="389265448071" lang="de" xmltv_id="389265448071">Crime+Investigation</channel>
+  <channel site="www.magenta.tv" site_id="389265448072" lang="de" xmltv_id="389265448072">Sky Sport Top Event</channel>
+  <channel site="www.magenta.tv" site_id="389265448073" lang="de" xmltv_id="389265448073">Sport 16 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389265448075" lang="de" xmltv_id="389265448075">Nicktoons (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389265960191" lang="de" xmltv_id="389265960191">Euro D</channel>
+  <channel site="www.magenta.tv" site_id="389265960192" lang="de" xmltv_id="389265960192">Sky Sport Bundesliga 2</channel>
+  <channel site="www.magenta.tv" site_id="389265960194" lang="de" xmltv_id="389265960194">ZWEI MUSIC TELEVISION</channel>
+  <channel site="www.magenta.tv" site_id="389265960195" lang="de" xmltv_id="389265960195">Rai 2</channel>
+  <channel site="www.magenta.tv" site_id="389265960196" lang="de" xmltv_id="389265960196">SWR Fernsehen RP</channel>
+  <channel site="www.magenta.tv" site_id="389265960197" lang="de" xmltv_id="389265960197">Show Max</channel>
+  <channel site="www.magenta.tv" site_id="389265960198" lang="de" xmltv_id="389265960198">Nick Jr. (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389265960199" lang="de" xmltv_id="389265960199">Penthouse Passion</channel>
+  <channel site="www.magenta.tv" site_id="389265960200" lang="de" xmltv_id="389265960200">Sport 7 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389265960201" lang="de" xmltv_id="389265960201">Euronews Deutsch</channel>
+  <channel site="www.magenta.tv" site_id="389265960204" lang="de" xmltv_id="389265960204">RTL Living</channel>
+  <channel site="www.magenta.tv" site_id="389265960205" lang="de" xmltv_id="389265960205">FOLX MUSIC TELEVISION</channel>
+  <channel site="www.magenta.tv" site_id="389265960207" lang="de" xmltv_id="389265960207">France 24 francais</channel>
+  <channel site="www.magenta.tv" site_id="389265960208" lang="de" xmltv_id="389265960208">Comedy Central</channel>
+  <channel site="www.magenta.tv" site_id="389265960209" lang="de" xmltv_id="389265960209">Sport 12 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389265960210" lang="de" xmltv_id="389265960210">TELE 5</channel>
+  <channel site="www.magenta.tv" site_id="389265960211" lang="de" xmltv_id="389265960211">Blue Hustler</channel>
+  <channel site="www.magenta.tv" site_id="389265960212" lang="de" xmltv_id="389265960212">beIN iZ</channel>
+  <channel site="www.magenta.tv" site_id="389265960213" lang="de" xmltv_id="389265960213">TOP SERIEN</channel>
+  <channel site="www.magenta.tv" site_id="389265960214" lang="de" xmltv_id="389265960214">Rai 1</channel>
+  <channel site="www.magenta.tv" site_id="389265960215" lang="de" xmltv_id="389265960215">Al Jazeera English</channel>
+  <channel site="www.magenta.tv" site_id="389265960216" lang="de" xmltv_id="389265960216">Nick Jr.</channel>
+  <channel site="www.magenta.tv" site_id="389265960218" lang="de" xmltv_id="389265960218">Asharq News</channel>
+  <channel site="www.magenta.tv" site_id="389265960219" lang="de" xmltv_id="389265960219">sonnenklar.TV</channel>
+  <channel site="www.magenta.tv" site_id="389265960220" lang="de" xmltv_id="389265960220">N24 Doku</channel>
+  <channel site="www.magenta.tv" site_id="389265960221" lang="de" xmltv_id="389265960221">MTV</channel>
+  <channel site="www.magenta.tv" site_id="389265960222" lang="de" xmltv_id="389265960222">Nick/Comedy Central+1</channel>
+  <channel site="www.magenta.tv" site_id="389265960223" lang="de" xmltv_id="389265960223">CNN International</channel>
+  <channel site="www.magenta.tv" site_id="389265960224" lang="de" xmltv_id="389265960224">Euronews Russki</channel>
+  <channel site="www.magenta.tv" site_id="389265960225" lang="de" xmltv_id="389265960225">Red Bull TV</channel>
+  <channel site="www.magenta.tv" site_id="389265960226" lang="de" xmltv_id="389265960226">Sky Sport 8</channel>
+  <channel site="www.magenta.tv" site_id="389265960227" lang="de" xmltv_id="389265960227">Spiegel Geschichte</channel>
+  <channel site="www.magenta.tv" site_id="389265960229" lang="de" xmltv_id="389265960229">K-TV</channel>
+  <channel site="www.magenta.tv" site_id="389265960231" lang="de" xmltv_id="389265960231">Cartoonito</channel>
+  <channel site="www.magenta.tv" site_id="389265960232" lang="de" xmltv_id="389265960232">Sky Documentaries</channel>
+  <channel site="www.magenta.tv" site_id="389265960233" lang="de" xmltv_id="389265960233">DMAX</channel>
+  <channel site="www.magenta.tv" site_id="389265960236" lang="de" xmltv_id="389265960236">Sportdigital1+</channel>
+  <channel site="www.magenta.tv" site_id="389265960237" lang="de" xmltv_id="389265960237">France 24 english</channel>
+  <channel site="www.magenta.tv" site_id="389265960239" lang="de" xmltv_id="389265960239">Sky Crime</channel>
+  <channel site="www.magenta.tv" site_id="389265960241" lang="de" xmltv_id="389265960241">DELUXE MUSIC</channel>
+  <channel site="www.magenta.tv" site_id="389265960242" lang="de" xmltv_id="389265960242">Lust pur</channel>
+  <channel site="www.magenta.tv" site_id="389266472146" lang="de" xmltv_id="389266472146">TOGGO plus</channel>
+  <channel site="www.magenta.tv" site_id="389266472147" lang="de" xmltv_id="389266472147">VOXup</channel>
+  <channel site="www.magenta.tv" site_id="389266472148" lang="de" xmltv_id="389266472148">Sky Sci-Fi (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389266472149" lang="de" xmltv_id="389266472149">Sky Nature</channel>
+  <channel site="www.magenta.tv" site_id="389266472150" lang="de" xmltv_id="389266472150">Sky Showcase</channel>
+  <channel site="www.magenta.tv" site_id="389266472151" lang="de" xmltv_id="389266472151">wetter.com TV</channel>
+  <channel site="www.magenta.tv" site_id="389266472152" lang="de" xmltv_id="389266472152">Sport 9 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389266472153" lang="de" xmltv_id="389266472153">The HISTORY Channel (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389266472154" lang="de" xmltv_id="389266472154">Universal TV (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389266472155" lang="de" xmltv_id="389266472155">AXN White</channel>
+  <channel site="www.magenta.tv" site_id="389266472157" lang="de" xmltv_id="389266472157">Sport 13 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389266472159" lang="de" xmltv_id="389266472159">Sky Cinema Family</channel>
+  <channel site="www.magenta.tv" site_id="389266472161" lang="de" xmltv_id="389266472161">Sport 15 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389266472162" lang="de" xmltv_id="389266472162">Sport 10 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389266472163" lang="de" xmltv_id="389266472163">Travelxp</channel>
+  <channel site="www.magenta.tv" site_id="389266472164" lang="de" xmltv_id="389266472164">sixx</channel>
+  <channel site="www.magenta.tv" site_id="389266472165" lang="de" xmltv_id="389266472165">MS Sport</channel>
+  <channel site="www.magenta.tv" site_id="389266472166" lang="de" xmltv_id="389266472166">Euronews Italiano</channel>
+  <channel site="www.magenta.tv" site_id="389266472167" lang="de" xmltv_id="389266472167">Sport 6 - myTeamTV</channel>
+  <channel site="www.magenta.tv" site_id="389266472168" lang="de" xmltv_id="389266472168">TELE 5</channel>
+  <channel site="www.magenta.tv" site_id="389266472169" lang="de" xmltv_id="389266472169">Sky Sport 4</channel>
+  <channel site="www.magenta.tv" site_id="389266472171" lang="de" xmltv_id="389266472171">Sky Sport 7</channel>
+  <channel site="www.magenta.tv" site_id="389266472172" lang="de" xmltv_id="389266472172">Fashion TV</channel>
+  <channel site="www.magenta.tv" site_id="389266472173" lang="de" xmltv_id="389266472173">GEO Television</channel>
+  <channel site="www.magenta.tv" site_id="389266472174" lang="de" xmltv_id="389266472174">HSE</channel>
+  <channel site="www.magenta.tv" site_id="389266472175" lang="de" xmltv_id="389266472175">Nick/Comedy Central+1</channel>
+  <channel site="www.magenta.tv" site_id="389266472176" lang="de" xmltv_id="389266472176">Kanal 7</channel>
+  <channel site="www.magenta.tv" site_id="389266472177" lang="de" xmltv_id="389266472177">auto motor und sport</channel>
+  <channel site="www.magenta.tv" site_id="389266472178" lang="de" xmltv_id="389266472178">Curiosity Channel</channel>
+  <channel site="www.magenta.tv" site_id="389266472179" lang="de" xmltv_id="389266472179">Eurostar TV</channel>
+  <channel site="www.magenta.tv" site_id="389266472181" lang="de" xmltv_id="389266472181">Cartoonito (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389266472182" lang="de" xmltv_id="389266472182">Crime+Investigation (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="389266472183" lang="de" xmltv_id="389266472183">Sky Sport 10</channel>
+  <channel site="www.magenta.tv" site_id="389266472185" lang="de" xmltv_id="389266472185">MOMENTS</channel>
+  <channel site="www.magenta.tv" site_id="389266472186" lang="de" xmltv_id="389266472186">ZDFinfo</channel>
+  <channel site="www.magenta.tv" site_id="415147560391" lang="de" xmltv_id="415147560391">WDR Fernsehen Duisburg</channel>
+  <channel site="www.magenta.tv" site_id="415147560392" lang="de" xmltv_id="415147560392">SAT.1 Bayern</channel>
+  <channel site="www.magenta.tv" site_id="415147560393" lang="de" xmltv_id="415147560393">SAT.1 Bayern</channel>
+  <channel site="www.magenta.tv" site_id="415148584245" lang="de" xmltv_id="415148584245">CNBC International</channel>
+  <channel site="www.magenta.tv" site_id="415148584246" lang="de" xmltv_id="415148584246">rbb fernsehen Brandenburg</channel>
+  <channel site="www.magenta.tv" site_id="415148584247" lang="de" xmltv_id="415148584247">TVP Polonia</channel>
+  <channel site="www.magenta.tv" site_id="415148584248" lang="de" xmltv_id="415148584248">RTL Bremen &amp; Niedersachsen</channel>
+  <channel site="www.magenta.tv" site_id="415148584249" lang="de" xmltv_id="415148584249">WDR Fernsehen Siegen</channel>
+  <channel site="www.magenta.tv" site_id="415148584250" lang="de" xmltv_id="415148584250">SAT.1 Rheinland-Pfalz und Hessen</channel>
+  <channel site="www.magenta.tv" site_id="415148584251" lang="de" xmltv_id="415148584251">NDR Fernsehen Hamburg</channel>
+  <channel site="www.magenta.tv" site_id="415148584252" lang="de" xmltv_id="415148584252">RTL Hamburg &amp; Schleswig-Holstein</channel>
+  <channel site="www.magenta.tv" site_id="415148584253" lang="de" xmltv_id="415148584253">RTL Hessen</channel>
+  <channel site="www.magenta.tv" site_id="415148584254" lang="de" xmltv_id="415148584254">SAT.1 Hamburg und Schleswig-Holstein</channel>
+  <channel site="www.magenta.tv" site_id="415149608108" lang="de" xmltv_id="415149608108">MDR-Fernsehen Thüringen</channel>
+  <channel site="www.magenta.tv" site_id="415149608150" lang="de" xmltv_id="415149608150">SAT.1 Niedersachsen und Bremen</channel>
+  <channel site="www.magenta.tv" site_id="415149608151" lang="de" xmltv_id="415149608151">MDR-Fernsehen Sachsen-Anhalt</channel>
+  <channel site="www.magenta.tv" site_id="415149608152" lang="de" xmltv_id="415149608152">WDR Fernsehen Bonn</channel>
+  <channel site="www.magenta.tv" site_id="415149608153" lang="de" xmltv_id="415149608153">RTL Hessen</channel>
+  <channel site="www.magenta.tv" site_id="415149608154" lang="de" xmltv_id="415149608154">NDR Fernsehen Mecklenburg-Vorpommern</channel>
+  <channel site="www.magenta.tv" site_id="415149608155" lang="de" xmltv_id="415149608155">NDR Fernsehen Schleswig-Holstein</channel>
+  <channel site="www.magenta.tv" site_id="415149608156" lang="de" xmltv_id="415149608156">RTL Nordrhein-Westfalen</channel>
+  <channel site="www.magenta.tv" site_id="415149608157" lang="de" xmltv_id="415149608157">RTL Bremen &amp; Niedersachsen</channel>
+  <channel site="www.magenta.tv" site_id="415150120077" lang="de" xmltv_id="415150120077">WDR Fernsehen Essen</channel>
+  <channel site="www.magenta.tv" site_id="415150120078" lang="de" xmltv_id="415150120078">SAT.1 Nordrhein-Westfalen</channel>
+  <channel site="www.magenta.tv" site_id="415150120094" lang="de" xmltv_id="415150120094">SAT.1 Nordrhein-Westfalen</channel>
+  <channel site="www.magenta.tv" site_id="415150120095" lang="de" xmltv_id="415150120095">WDR Fernsehen Dortmund</channel>
+  <channel site="www.magenta.tv" site_id="415150120096" lang="de" xmltv_id="415150120096">ERT World</channel>
+  <channel site="www.magenta.tv" site_id="415150120097" lang="de" xmltv_id="415150120097">Euronews English</channel>
+  <channel site="www.magenta.tv" site_id="415150120143" lang="de" xmltv_id="415150120143">WDR Fernsehen Bielefeld</channel>
+  <channel site="www.magenta.tv" site_id="415150120169" lang="de" xmltv_id="415150120169">SAT.1 Niedersachsen und Bremen</channel>
+  <channel site="www.magenta.tv" site_id="415150632065" lang="de" xmltv_id="415150632065">WDR Fernsehen Aachen</channel>
+  <channel site="www.magenta.tv" site_id="415150632109" lang="de" xmltv_id="415150632109">WDR Fernsehen Wuppertal</channel>
+  <channel site="www.magenta.tv" site_id="415150632110" lang="de" xmltv_id="415150632110">RTL Hamburg &amp; Schleswig-Holstein</channel>
+  <channel site="www.magenta.tv" site_id="415150632111" lang="de" xmltv_id="415150632111">WDR Fernsehen Düsseldorf</channel>
+  <channel site="www.magenta.tv" site_id="415150632112" lang="de" xmltv_id="415150632112">Imearth</channel>
+  <channel site="www.magenta.tv" site_id="415150632113" lang="de" xmltv_id="415150632113">RTL Nordrhein-Westfalen</channel>
+  <channel site="www.magenta.tv" site_id="415150632114" lang="de" xmltv_id="415150632114">SAT.1 Hamburg und Schleswig-Holstein</channel>
+  <channel site="www.magenta.tv" site_id="415151144338" lang="de" xmltv_id="415151144338">SAT.1 Rheinland-Pfalz und Hessen</channel>
+  <channel site="www.magenta.tv" site_id="415151144359" lang="de" xmltv_id="415151144359">WDR Fernsehen Münster</channel>
+  <channel site="www.magenta.tv" site_id="415151144360" lang="de" xmltv_id="415151144360">BR Fernsehen Nord</channel>
+  <channel site="www.magenta.tv" site_id="463893544181" lang="de" xmltv_id="463893544181">France 2</channel>
+  <channel site="www.magenta.tv" site_id="463895080134" lang="de" xmltv_id="463895080134">France 3</channel>
+  <channel site="www.magenta.tv" site_id="481691176161" lang="de" xmltv_id="481691176161">RTL Bayern</channel>
+  <channel site="www.magenta.tv" site_id="481691176162" lang="de" xmltv_id="481691176162">RTL Rhein-Neckar</channel>
+  <channel site="www.magenta.tv" site_id="481694759991" lang="de" xmltv_id="481694759991">RTL Rhein-Neckar</channel>
+  <channel site="www.magenta.tv" site_id="481694759992" lang="de" xmltv_id="481694759992">RTL Bayern</channel>
+  <channel site="www.magenta.tv" site_id="488325160190" lang="de" xmltv_id="488325160190">ATV Avrupa</channel>
+  <channel site="www.magenta.tv" site_id="488325160191" lang="de" xmltv_id="488325160191">TRT Cocuk</channel>
+  <channel site="www.magenta.tv" site_id="492496936303" lang="de" xmltv_id="492496936303">Disney Channel</channel>
+  <channel site="www.magenta.tv" site_id="492496936304" lang="de" xmltv_id="492496936304">TV Mainfranken</channel>
+  <channel site="www.magenta.tv" site_id="492496936305" lang="de" xmltv_id="492496936305">ProSiebenSat.1</channel>
+  <channel site="www.magenta.tv" site_id="492496936306" lang="de" xmltv_id="492496936306">TV Oberfranken</channel>
+  <channel site="www.magenta.tv" site_id="492496936307" lang="de" xmltv_id="492496936307">ems TV</channel>
+  <channel site="www.magenta.tv" site_id="492496936308" lang="de" xmltv_id="492496936308">TV Westsachsen</channel>
+  <channel site="www.magenta.tv" site_id="492496936310" lang="de" xmltv_id="492496936310">a.tv</channel>
+  <channel site="www.magenta.tv" site_id="492497448192" lang="de" xmltv_id="492497448192">tv.ingolstadt</channel>
+  <channel site="www.magenta.tv" site_id="492497448194" lang="de" xmltv_id="492497448194">Baden TV Süd</channel>
+  <channel site="www.magenta.tv" site_id="492497448195" lang="de" xmltv_id="492497448195">NIEDERBAYERN TV Deggendorf - Straubing</channel>
+  <channel site="www.magenta.tv" site_id="492497448196" lang="de" xmltv_id="492497448196">RFO</channel>
+  <channel site="www.magenta.tv" site_id="492497448197" lang="de" xmltv_id="492497448197">NIEDERBAYERN TV Passau</channel>
+  <channel site="www.magenta.tv" site_id="492497448198" lang="de" xmltv_id="492497448198">TVA Ostbayern</channel>
+  <channel site="www.magenta.tv" site_id="492497960281" lang="de" xmltv_id="492497960281">TV Mittelrhein</channel>
+  <channel site="www.magenta.tv" site_id="492497960282" lang="de" xmltv_id="492497960282">RFH Regionalfernsehen Harz</channel>
+  <channel site="www.magenta.tv" site_id="492497960283" lang="de" xmltv_id="492497960283">MDF.1 Fernsehen</channel>
+  <channel site="www.magenta.tv" site_id="492497960284" lang="de" xmltv_id="492497960284">JenaTV</channel>
+  <channel site="www.magenta.tv" site_id="492497960285" lang="de" xmltv_id="492497960285">allgäu.tv</channel>
+  <channel site="www.magenta.tv" site_id="492498472231" lang="de" xmltv_id="492498472231">münchen.tv</channel>
+  <channel site="www.magenta.tv" site_id="492498472232" lang="de" xmltv_id="492498472232">salve.tv</channel>
+  <channel site="www.magenta.tv" site_id="492498472233" lang="de" xmltv_id="492498472233">Oberpfalz TV</channel>
+  <channel site="www.magenta.tv" site_id="492498984397" lang="de" xmltv_id="492498984397">OK:TV Mainz</channel>
+  <channel site="www.magenta.tv" site_id="492498984398" lang="de" xmltv_id="492498984398">OK54 Trier</channel>
+  <channel site="www.magenta.tv" site_id="492498984399" lang="de" xmltv_id="492498984399">OK4</channel>
+  <channel site="www.magenta.tv" site_id="492498984400" lang="de" xmltv_id="492498984400">LAUSITZWELLE</channel>
+  <channel site="www.magenta.tv" site_id="492498984401" lang="de" xmltv_id="492498984401">Baden TV</channel>
+  <channel site="www.magenta.tv" site_id="492498984402" lang="de" xmltv_id="492498984402">rheinlOKal</channel>
+  <channel site="www.magenta.tv" site_id="492499496075" lang="de" xmltv_id="492499496075">Franken Fernsehen</channel>
+  <channel site="www.magenta.tv" site_id="492499496076" lang="de" xmltv_id="492499496076">DELUXE MUSIC</channel>
+  <channel site="www.magenta.tv" site_id="492499496077" lang="de" xmltv_id="492499496077">Disney Channel</channel>
+  <channel site="www.magenta.tv" site_id="492499496078" lang="de" xmltv_id="492499496078">SRF</channel>
+  <channel site="www.magenta.tv" site_id="492499496079" lang="de" xmltv_id="492499496079">Rennsteig.TV</channel>
+  <channel site="www.magenta.tv" site_id="492499496080" lang="de" xmltv_id="492499496080">HGTV</channel>
+  <channel site="www.magenta.tv" site_id="492499496081" lang="de" xmltv_id="492499496081">NRWision</channel>
+  <channel site="www.magenta.tv" site_id="492499496082" lang="de" xmltv_id="492499496082">Regio TV</channel>
+  <channel site="www.magenta.tv" site_id="492499496083" lang="de" xmltv_id="492499496083">NIEDERBAYERN TV Landshut</channel>
+  <channel site="www.magenta.tv" site_id="492499496084" lang="de" xmltv_id="492499496084">Friesischer Rundfunk</channel>
+  <channel site="www.magenta.tv" site_id="492499496085" lang="de" xmltv_id="492499496085">OK Weinstraße</channel>
+  <channel site="www.magenta.tv" site_id="509713959991" lang="de" xmltv_id="509713959991">Sky Cinema Highlights</channel>
+  <channel site="www.magenta.tv" site_id="516781096166" lang="de" xmltv_id="516781096166">France 5</channel>
+  <channel site="www.magenta.tv" site_id="516781096167" lang="de" xmltv_id="516781096167">BBC News</channel>
+  <channel site="www.magenta.tv" site_id="516782120054" lang="de" xmltv_id="516782120054">lausitz.tv</channel>
+  <channel site="www.magenta.tv" site_id="516783656172" lang="de" xmltv_id="516783656172">altenburg.tv</channel>
+  <channel site="www.magenta.tv" site_id="516784168005" lang="de" xmltv_id="516784168005">France 4</channel>
+  <channel site="www.magenta.tv" site_id="561114664140" lang="de" xmltv_id="561114664140">Glück Auf! TV</channel>
+  <channel site="www.magenta.tv" site_id="561123367987" lang="de" xmltv_id="561123367987">RBW</channel>
+  <channel site="www.magenta.tv" site_id="587597352323" lang="de" xmltv_id="587597352323">Stimmungsgarten TV</channel>
+  <channel site="www.magenta.tv" site_id="587598887992" lang="de" xmltv_id="587598887992">RiC.today</channel>
+  <channel site="www.magenta.tv" site_id="587598887993" lang="de" xmltv_id="587598887993">Fix&amp;Foxi TV</channel>
+  <channel site="www.magenta.tv" site_id="587599400156" lang="de" xmltv_id="587599400156">Hope TV</channel>
+  <channel site="www.magenta.tv" site_id="597433895959" lang="de" xmltv_id="597433895959">Travelxp 4K</channel>
+  <channel site="www.magenta.tv" site_id="610214440158" lang="de" xmltv_id="610214440158">teltOwkanal</channel>
+  <channel site="www.magenta.tv" site_id="636955688283" lang="de" xmltv_id="636955688283">HT SPOR</channel>
+  <channel site="www.magenta.tv" site_id="658197032097" lang="de" xmltv_id="658197032097">BLK TV</channel>
+  <channel site="www.magenta.tv" site_id="658197544149" lang="de" xmltv_id="658197544149">Lilo.TV</channel>
+  <channel site="www.magenta.tv" site_id="662243367962" lang="de" xmltv_id="662243367962">Juwelo</channel>
+  <channel site="www.magenta.tv" site_id="662243880190" lang="de" xmltv_id="662243880190">RAN1</channel>
+  <channel site="www.magenta.tv" site_id="669655079976" lang="de" xmltv_id="669655079976">QVC ZWEI</channel>
+  <channel site="www.magenta.tv" site_id="695561768145" lang="de" xmltv_id="695561768145">Romance TV (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="695561768146" lang="de" xmltv_id="695561768146">National Geographic (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="695563816191" lang="de" xmltv_id="695563816191">Jukebox (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="695564328412" lang="de" xmltv_id="695564328412">Beate-Uhse.TV (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="695564328413" lang="de" xmltv_id="695564328413">Heimatkanal (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="698208807980" lang="de" xmltv_id="698208807980">kulturmd</channel>
+  <channel site="www.magenta.tv" site_id="701488168394" lang="de" xmltv_id="701488168394">National Geographic Wild (Sky)</channel>
+  <channel site="www.magenta.tv" site_id="704010792353" lang="de" xmltv_id="704010792353">GüstrowTV</channel>
+  <channel site="www.magenta.tv" site_id="736340520422" lang="de" xmltv_id="736340520422">World of Freesports</channel>
+  <channel site="www.magenta.tv" site_id="736340520423" lang="de" xmltv_id="736340520423">Filmgold</channel>
+  <channel site="www.magenta.tv" site_id="736344616035" lang="de" xmltv_id="736344616035">KultKrimi</channel>
+  <channel site="www.magenta.tv" site_id="736345639978" lang="de" xmltv_id="736345639978">Telenovela ZDF</channel>
+  <channel site="www.magenta.tv" site_id="738497064302" lang="de" xmltv_id="738497064302">Landlust TV</channel>
+  <channel site="www.magenta.tv" site_id="738500136328" lang="de" xmltv_id="738500136328">Scooore</channel>
+  <channel site="www.magenta.tv" site_id="745871912203" lang="de" xmltv_id="745871912203">SYLT1</channel>
+  <channel site="www.magenta.tv" site_id="746148392381" lang="de" xmltv_id="746148392381">MS GOLF 1</channel>
+  <channel site="www.magenta.tv" site_id="746150440202" lang="de" xmltv_id="746150440202">MS GOLF 2</channel>
+  <channel site="www.magenta.tv" site_id="750315048280" lang="de" xmltv_id="750315048280">Baby TV</channel>
+  <channel site="www.magenta.tv" site_id="754135080287" lang="de" xmltv_id="754135080287">Spiegel TV</channel>
+  <channel site="www.magenta.tv" site_id="754135080288" lang="de" xmltv_id="754135080288">Grjngo</channel>
+  <channel site="www.magenta.tv" site_id="754136616350" lang="de" xmltv_id="754136616350">NARUTO</channel>
+  <channel site="www.magenta.tv" site_id="754137640065" lang="de" xmltv_id="754137640065">TOP SCI-FI</channel>
+  <channel site="www.magenta.tv" site_id="754137640066" lang="de" xmltv_id="754137640066">TOP TRUE CRIME</channel>
+  <channel site="www.magenta.tv" site_id="754138152287" lang="de" xmltv_id="754138152287">Royalworld</channel>
+  <channel site="www.magenta.tv" site_id="754138663958" lang="de" xmltv_id="754138663958">Terra Mater WILD</channel>
+  <channel site="www.magenta.tv" site_id="764249128121" lang="de" xmltv_id="764249128121">Moviedome</channel>
+  <channel site="www.magenta.tv" site_id="764249640071" lang="de" xmltv_id="764249640071">Fabella</channel>
+  <channel site="www.magenta.tv" site_id="764523048346" lang="de" xmltv_id="764523048346">Shopping Queen</channel>
+  <channel site="www.magenta.tv" site_id="764523560413" lang="de" xmltv_id="764523560413">hundkatzemaus</channel>
+  <channel site="www.magenta.tv" site_id="764524584021" lang="de" xmltv_id="764524584021">Bauer sucht Frau</channel>
+  <channel site="www.magenta.tv" site_id="764525608043" lang="de" xmltv_id="764525608043">Alarm für Cobra 11 / Balko</channel>
+  <channel site="www.magenta.tv" site_id="767935016341" lang="de" xmltv_id="767935016341">tv.berlin</channel>
+  <channel site="www.magenta.tv" site_id="767936040120" lang="de" xmltv_id="767936040120">ALEX Berlin</channel>
+  <channel site="www.magenta.tv" site_id="767936552360" lang="de" xmltv_id="767936552360">L-TV</channel>
+  <channel site="www.magenta.tv" site_id="767936552361" lang="de" xmltv_id="767936552361">Leipzig Fernsehen</channel>
+  <channel site="www.magenta.tv" site_id="767936552362" lang="de" xmltv_id="767936552362">Studio 47</channel>
+  <channel site="www.magenta.tv" site_id="767937064033" lang="de" xmltv_id="767937064033">Dresden Fernsehen</channel>
+  <channel site="www.magenta.tv" site_id="767937576117" lang="de" xmltv_id="767937576117">Chemnitz Fernsehen</channel>
+  <channel site="www.magenta.tv" site_id="769865767977" lang="de" xmltv_id="769865767977">Sky Sport Bundesliga</channel>
+  <channel site="www.magenta.tv" site_id="769867816329" lang="de" xmltv_id="769867816329">Sky Sport</channel>
+  <channel site="www.magenta.tv" site_id="492498472234" lang="de" xmltv_id="492498472234">RTL</channel>
+</channels>

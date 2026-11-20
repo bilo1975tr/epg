@@ -1,0 +1,64 @@
+name: Monthly Channel Validation & Site Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      sites:
+        description: 'Opsiyonel site adları (virgülle ayrılmış - boş bırakılırsa tüm siteler)'
+        required: false
+        default: ''
+      langs:
+        description: 'Opsiyonel dil kodları (virgülle ayrılmış - boş bırakılırsa tüm diller)'
+        required: false
+        default: ''
+  schedule:
+    - cron: '0 3 1 * *'
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Sync latest world sites from upstream
+        run: npm run sites:sync
+
+      - name: Validate channels and check live EPG availability
+        run: |
+          ARGS="--concurrency=8 --max-verify=500"
+          if [ -n "${{ github.event.inputs.sites }}" ]; then
+            ARGS="$ARGS --sites=${{ github.event.inputs.sites }}"
+          fi
+          if [ -n "${{ github.event.inputs.langs }}" ]; then
+            ARGS="$ARGS --langs=${{ github.event.inputs.langs }}"
+          fi
+          npm run channels:validate-prune -- $ARGS
+
+      - name: Lint channel XML files
+        run: npm run channels:lint
+
+      - name: Commit and push updated sites
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sites/
+          if ! git diff --cached --quiet; then
+            git commit -m "[Bot] Monthly channel validation and site sync ($(date -u +'%Y-%m'))" --no-verify
+            git push
+          else
+            echo "No changes in sites/"
+          fi
