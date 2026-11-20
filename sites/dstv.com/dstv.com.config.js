@@ -190,9 +190,13 @@ async function loadProgramDetails(item) {
   const url = `${API_ENDPOINT}/GetProgramme?id=${item.Id}`
 
   return axios
-    .get(url)
-    .then(r => r.data)
-    .catch(console.error)
+    .get(url, {
+      validateStatus: function (status) {
+        return (status >= 200 && status < 300) || status === 404
+      }
+    })
+    .then(r => (r.status === 404 ? null : r.data))
+    .catch(() => null)
 }
 
 function parseItems(content, channel) {
